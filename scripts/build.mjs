@@ -62,7 +62,7 @@ async function createZip(paths) {
 
 try {
   const seed = validateState(seedState());
-  const required = new Set(['index.html','app.js','styles.css','model.js','repository.js','seed.js','ui.js','views.js','map.js','assets/emblem.svg']);
+  const required = new Set(['index.html','app.js','styles.css','model.js','repository.js','seed.js','ui.js','views.js','map.js','regions.js','geometry.js','atlas-data.js','migrations.js','assets/emblem.svg']);
   for (const c of seed.campaigns) {
     for (const map of c.maps) required.add(map.image);
     for (const ch of c.characters) {

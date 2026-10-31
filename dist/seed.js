@@ -1,4 +1,5 @@
 import {ATTRIBUTES, emptyCharacter} from './model.js';
+import {migrateState} from './migrations.js';
 const mapId='caldris';
 const locations=[
  ['capital','Caldris Real',44,40,'Capital de 70 mil almas. Barreira seletiva ativa: pessoas circulam; exércitos externos não entram. Carta de sucessão com 43 selos.'],
@@ -56,7 +57,7 @@ const chapters=[
 ];
 const records=(prefix,rows)=>rows.map(([title,status,body],i)=>({id:`${prefix}${i}`,title,status,body}));
 export function seedState() {
- return structuredClone({schemaVersion:1,revision:0,campaigns:[{id:'voz-que-devolve',name:'A Voz Que Devolve',subtitle:'Crônica de Monzai Dragon',day:'Dia 26 da Lua Pálida · 02h',updatedAt:'2026-10-31T00:00:00Z',maps:[{id:mapId,name:'Caldris e terras vizinhas',image:'assets/Mapa.webp'}],locations,characters,chapters,
+ return migrateState({schemaVersion:1,revision:0,campaigns:[{id:'voz-que-devolve',name:'A Voz Que Devolve',subtitle:'Crônica de Monzai Dragon',day:'Dia 26 da Lua Pálida · 02h',updatedAt:'2026-10-31T00:00:00Z',maps:[{id:mapId,name:'Caldris e terras vizinhas',image:'assets/Mapa.webp'}],locations,characters,chapters,
  factions:records('f',[
  ['A Coroa','Reconstrução','Monzai é rainha por Carta com 43 selos. Rorik está foragido com guarda e tesouro portátil. Brasão do reino: corvo sobre espada; símbolo da Coroa: leão branco.'],
  ['Conselho do Reino','Fundado','50 cadeiras. Presidente: Lady Oriane Velarde. O voto da rainha vale tanto quanto qualquer outro. A maioria pode depô-la; ninguém vota em causa própria. Uma cadeira está reservada a Velarde.'],

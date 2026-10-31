@@ -1,5 +1,6 @@
-/** @typedef {{id:string,name:string,characters:Array,chapters:Array,maps:Array,locations:Array,factions:Array,threads:Array,lore:Array,tournament:object}} Campaign */
-export const SCHEMA_VERSION = 1;
+import {validPolygon,pointInPolygon} from './geometry.js';
+/** @typedef {{id:string,name:string,characters:Array,chapters:Array,maps:Array,regions:Array,locations:Array,factions:Array,threads:Array,lore:Array,tournament:object}} Campaign */
+export const SCHEMA_VERSION = 2;
 export const uid = () => {
   if (globalThis.crypto?.randomUUID) return crypto.randomUUID();
   // getRandomValues is available on HTTP development origins as well as HTTPS.
@@ -23,7 +24,7 @@ function requireValue(condition, message) { if (!condition) throw new Error(mess
 function list(value, name, max = 5000) { requireValue(Array.isArray(value) && value.length <= max, `Lista inválida: ${name}.`); const ids = new Set(); for (const row of value) {requireValue(row && typeof row.id==='string' && /^[a-zA-Z0-9][a-zA-Z0-9_-]{0,99}$/.test(row.id) && !['constructor','prototype'].includes(row.id) && !ids.has(row.id), `Identificadores inválidos em ${name}.`); ids.add(row.id);} }
 /** Validate the entire backup before allowing an atomic replacement. */
 export function validateState(state) {
-  requireValue(state && state.schemaVersion === SCHEMA_VERSION, 'Versão de arquivo incompatível. Esperado: 1.');
+  requireValue(state && state.schemaVersion === SCHEMA_VERSION, 'Versão de arquivo incompatível. Esperado: 2.');
   requireValue(Number.isSafeInteger(state.revision) && state.revision>=0, 'Revisão de arquivo inválida.');
   list(state.campaigns, 'campanhas', 100); requireValue(state.campaigns.length > 0, 'É necessário ter uma campanha.');
   for (const c of state.campaigns) {
@@ -31,8 +32,21 @@ export function validateState(state) {
     requireValue(text(c.subtitle, 500) && text(c.day, 140), 'Metadados inválidos.');
     requireValue(text(c.updatedAt,100) && Number.isFinite(Date.parse(c.updatedAt)), 'Data da campanha inválida.');
     if(c.history!==undefined)requireValue(Array.isArray(c.history) && c.history.length<=60 && c.history.every(h=>h && text(h.description,500) && text(h.date,100) && Number.isFinite(Date.parse(h.date))), 'Histórico inválido.');
-    for (const key of ['characters','chapters','maps','locations','factions','threads','lore']) list(c[key], key);
+    for (const key of ['characters','chapters','maps','regions','locations','factions','threads','lore']) list(c[key], key);
     for (const m of c.maps) requireValue(text(m.name, 140) && !!safeImage(m.image), 'Imagem ou nome de mapa inválido.');
+    const linkedMaps=new Set();
+    for(const region of c.regions) {
+      requireValue(text(region.name,140)&&region.name.trim()&&text(region.summary), 'Nome ou resumo de região inválido.');
+      requireValue(c.maps.some(m=>m.id===region.worldMapId)&&c.maps.some(m=>m.id===region.mapId)&&region.mapId!==region.worldMapId&&!linkedMaps.has(region.mapId), 'Ligação de mapas da região inválida.');
+      linkedMaps.add(region.mapId);
+      requireValue(validPolygon(region.polygon), 'Contorno de região inválido: use 3 a 80 pontos sem cruzamentos.');
+      requireValue(Number.isFinite(region.x)&&Number.isFinite(region.y)&&pointInPolygon([region.x,region.y],region.polygon), 'Ponto central da região fora do contorno.');
+      requireValue(Array.isArray(region.locationIds)&&region.locationIds.length<=5000&&new Set(region.locationIds).size===region.locationIds.length&&region.locationIds.every(id=>c.locations.some(l=>l.id===id&&(l.mapId===region.worldMapId||l.mapId===region.mapId))), 'Locais vinculados à região inválidos.');
+    }
+    for(const region of c.regions) {
+      const seen=new Set([region.mapId]);let current=region.worldMapId;
+      while(current){requireValue(!seen.has(current),'Ciclo entre mapas regionais.');seen.add(current);current=c.regions.find(r=>r.mapId===current)?.worldMapId;}
+    }
     for (const ch of c.characters) {
       requireValue(text(ch.name, 140) && ch.name.trim() && text(ch.role, 500) && text(ch.summary) && text(ch.notes) && text(ch.relations) && text(ch.age, 100) && text(ch.rank, 140) && text(ch.faction, 200) && text(ch.loyalty, 500), 'Ficha de personagem inválida.');
       requireValue(ch.image === '' || !!safeImage(ch.image), 'Imagem de personagem inválida.');
@@ -41,6 +55,7 @@ export function validateState(state) {
       for (const [mapId, p] of Object.entries(ch.positions)) requireValue(c.maps.some(m=>m.id===mapId) && p && Number.isFinite(p.x) && Number.isFinite(p.y) && p.x>=0 && p.x<=100 && p.y>=0 && p.y<=100, 'Coordenada fora do mapa.');
       requireValue(ch.attributes && ATTRIBUTES.every(a=>ch.attributes[a] === null || (Number.isInteger(ch.attributes[a]) && ch.attributes[a]>=0 && ch.attributes[a]<=9999999)), 'Atributos inválidos.');
       requireValue(ch.locationId === '' || c.locations.some(l=>l.id===ch.locationId), 'Localidade de personagem inexistente.');
+      requireValue(ch.regionId===''||c.regions.some(r=>r.id===ch.regionId),'Região de personagem inexistente.');
     }
     for (const row of c.chapters) {
       requireValue(text(row.title, 200) && row.title.trim() && text(row.body) && text(row.period, 100) && ['Rascunho','Em andamento','Concluído'].includes(row.status), 'Capítulo inválido.');
@@ -55,10 +70,10 @@ export function validateState(state) {
   return state;
 }
 export function emptyCampaign(name) {
-  return {id:uid(),name,subtitle:'Um novo mundo está esperando.',day:'Dia 1',characters:[],chapters:[],maps:[],locations:[],factions:[],threads:[],lore:[],tournament:{rules:'',matches:[]},updatedAt:new Date().toISOString()};
+  return {id:uid(),name,subtitle:'Um novo mundo está esperando.',day:'Dia 1',characters:[],chapters:[],maps:[],regions:[],locations:[],factions:[],threads:[],lore:[],tournament:{rules:'',matches:[]},updatedAt:new Date().toISOString()};
 }
 export function emptyCharacter() {
-  return {id:uid(),name:'',role:'',age:'',rank:'',image:'',summary:'',notes:'',relations:'',faction:'',loyalty:'',locationId:'',positions:{},attributes:Object.fromEntries(ATTRIBUTES.map(a=>[a,null]))};
+  return {id:uid(),name:'',role:'',age:'',rank:'',image:'',summary:'',notes:'',relations:'',faction:'',loyalty:'',locationId:'',regionId:'',positions:{},attributes:Object.fromEntries(ATTRIBUTES.map(a=>[a,null]))};
 }
 export function removeCharacter(campaign, id) {
   campaign.characters = campaign.characters.filter(c=>c.id!==id);

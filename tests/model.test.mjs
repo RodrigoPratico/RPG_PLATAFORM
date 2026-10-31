@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {validateState,emptyCampaign,emptyCharacter,removeCharacter,positionAtLocation,safeImage,escapeHTML,uid} from '../dist/model.js';
+import {SCHEMA_VERSION,validateState,emptyCampaign,emptyCharacter,removeCharacter,positionAtLocation,safeImage,escapeHTML,uid} from '../dist/model.js';
 import {seedState} from '../dist/seed.js';
 
 test('campanha inicial preserva fatos, vínculos e incertezas',()=>{
@@ -53,7 +53,7 @@ test('locais usam coordenadas percentuais por mapa e preservam posições de out
 test('campanhas vazias são independentes e válidas',()=>{
  const a=emptyCampaign('Campanha A'),b=emptyCampaign('Campanha B');a.characters.push(emptyCharacter());
  assert.equal(b.characters.length,0);assert.notEqual(a.id,b.id);
- validateState({schemaVersion:1,revision:0,campaigns:[b]});
+ validateState({schemaVersion:SCHEMA_VERSION,revision:0,campaigns:[b]});
 });
 test('texto e imagens não permitem HTML ou URLs executáveis',()=>{
  assert.equal(escapeHTML('<script>"&'), '&lt;script&gt;&quot;&amp;');
