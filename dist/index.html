@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171d1a">
+  <meta name="description" content="Atlas de campanhas: histórias, personagens e um mundo em movimento.">
+  <title>Caldris — Atlas de Crônicas</title>
+  <link rel="icon" href="./assets/emblem.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Ir para o conteúdo</a>
+  <aside id="sidebar">
+    <a class="brand" href="#mapa"><img src="./assets/emblem.svg" alt=""><span>CALDRIS<small>ATLAS DE CRÔNICAS</small></span></a>
+    <div class="side-label">SEU UNIVERSO</div>
+    <label class="sr-only" for="campaign-select">Campanha</label><select id="campaign-select"></select>
+    <nav aria-label="Navegação principal" id="nav"></nav>
+    <div class="side-bottom"><div class="moon">◒ <span>Sob as duas luas</span> ◓</div><p>Todo universo começa<br>com uma boa história.</p><button id="help-button" class="text-button">Como usar o atlas ↗</button></div>
+  </aside>
+  <div id="shell">
+    <header class="topbar"><span id="breadcrumb">Campanha / Atlas do mundo</span><div class="top-actions"><span id="save-state" role="status">Iniciando arquivo…</span><button id="backup-button" class="quiet">↓ Backup</button><button id="mobile-menu" class="quiet" aria-label="Abrir navegação">☰</button></div></header>
+    <main id="main" tabindex="-1"><div class="loading">Abrindo os arquivos de Caldris…</div></main>
+    <footer>CALDRIS <span>Um lugar para guardar mundos.</span><button id="storage-button" class="text-button">Salvo neste navegador · exporte seu backup</button></footer>
+  </div>
+  <dialog id="editor"><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="hover-card" role="tooltip" hidden></div>
+  <noscript>Ative o JavaScript para abrir seu atlas de campanhas.</noscript>
+</body></html>
