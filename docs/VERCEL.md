@@ -36,7 +36,7 @@ Antes de mudar de endereço:
 2. No domínio novo, abra **Universo e backups → Importar backup**.
 3. Selecione o arquivo, valide e confirme a substituição dos dados iniciais.
 
-O arquivo inclui todas as campanhas, textos, mapas, fichas e posições. O IndexedDB é separado por origem: domínio antigo, domínio novo, `www` e URLs de preview não compartilham o banco. Publicar novamente no mesmo domínio preserva os registros existentes; modificar `seed.js` só afeta navegadores que ainda não têm um banco. Use importação de backup para aplicar um estado diferente a um banco já existente.
+O arquivo inclui todas as campanhas, textos, mapas, fichas e posições. O IndexedDB é separado por origem: domínio antigo, domínio novo, `www` e URLs de preview não compartilham o banco. Publicar novamente no mesmo domínio preserva os registros existentes. A atualização do schema 1 para o 2 possui uma migração explícita: instala o atlas regional de Caldris reconhecida, arquiva o mapa anterior e preserva capítulos e notas. Alterações posteriores no seed, sem nova migração, afetam apenas bancos novos. Use importação de backup para aplicar outro estado a um banco existente.
 
 ## Acesso e colaboração
 

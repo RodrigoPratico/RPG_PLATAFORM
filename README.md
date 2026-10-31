@@ -14,6 +14,8 @@ Ao migrar do endereço anterior para o domínio novo, exporte o backup no endere
 
 ## Rodar no CachyOS / Ubuntu
 
+Guia direto para clonar, executar, atualizar e manter os dados: [docs/LOCAL.md](docs/LOCAL.md).
+
 Requisitos de execução: **Python 3.11+** e um navegador com JavaScript e IndexedDB. Não precisa de Node.js, npm, Docker, GPU ou acesso root para executar. A interface não depende de CDN, fontes externas ou serviços de IA.
 
 1. Baixe `caldris-linux.zip` pela aba **Universo e backups**, extraia e abra um terminal na pasta `caldris-atlas`.
