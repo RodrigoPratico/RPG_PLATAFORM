@@ -19,7 +19,7 @@ const locations=[
 ].map(([id,name,x,y,description])=>({id,name,x,y,description,mapId}));
 function character(id,name,image,locationId,role,age,rank,summary,relations,loyalty,faction,attributes={},notes='') {
  const loc=locations.find(l=>l.id===locationId);
- return {...emptyCharacter(),id,name,image:image?`assets/${image}.webp`:'',portrait:image?`assets/${image}-portrait.webp`:'',locationId,role,age,rank,summary,relations,loyalty,faction,notes,positions:loc?{[mapId]:{x:loc.x,y:loc.y}}:{},attributes:Object.fromEntries(ATTRIBUTES.map(a=>[a,attributes[a]??null]))};
+ return {...emptyCharacter(),id,name,image:image?`assets/Cards/${image}.webp`:'',portrait:image?`assets/Cards/Miniaturas/${image}.webp`:'',locationId,role,age,rank,summary,relations,loyalty,faction,notes,positions:loc?{[mapId]:{x:loc.x,y:loc.y}}:{},attributes:Object.fromEntries(ATTRIBUTES.map(a=>[a,attributes[a]??null]))};
 }
 const all100=Object.fromEntries(ATTRIBUTES.map(a=>[a,100]));
 const characters=[
@@ -57,7 +57,7 @@ const chapters=[
 ];
 const records=(prefix,rows)=>rows.map(([title,status,body],i)=>({id:`${prefix}${i}`,title,status,body}));
 export function baselineState() {
- return clone({schemaVersion:1,revision:0,campaigns:[{id:'voz-que-devolve',name:'A Voz Que Devolve',subtitle:'Crônica de Monzai Dragon',day:'Dia 26 da Lua Pálida · 02h',updatedAt:'2026-10-31T00:00:00Z',maps:[{id:mapId,name:'Caldris e terras vizinhas',image:'assets/Mapa.webp'}],locations,characters,chapters,
+ return clone({schemaVersion:1,revision:0,campaigns:[{id:'voz-que-devolve',name:'A Voz Que Devolve',subtitle:'Crônica de Monzai Dragon',day:'Dia 26 da Lua Pálida · 02h',updatedAt:'2026-10-31T00:00:00Z',maps:[{id:mapId,name:'Caldris e terras vizinhas',image:'assets/Mapa/Arquivo/Mapa anterior.webp'}],locations,characters,chapters,
  factions:records('f',[
  ['A Coroa','Reconstrução','Monzai é rainha por Carta com 43 selos. Rorik está foragido com guarda e tesouro portátil. Brasão do reino: corvo sobre espada; símbolo da Coroa: leão branco.'],
  ['Conselho do Reino','Fundado','50 cadeiras. Presidente: Lady Oriane Velarde. O voto da rainha vale tanto quanto qualquer outro. A maioria pode depô-la; ninguém vota em causa própria. Uma cadeira está reservada a Velarde.'],

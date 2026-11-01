@@ -1,6 +1,16 @@
 # Histórico de versões
 
-## 1.3.0 · 01/11/2026
+## 1.3.1 · 31/10/2026
+
+- Integração das dez sub-regiões de Caldris Real do commit 11aaab8; quarenta locais ilustrados disponíveis.
+
+- Imagens organizadas integralmente em assets/Cards, assets/Mapa e assets/Interface.
+- Remoção de 29 cópias antigas de imagens na raiz e de temporários vazios; originais fornecidos preservados.
+- URLs antigos mantidos por aliases compartilhados entre aplicação, servidor Linux e reescritas da Vercel.
+- Normalização de caminhos também em salvamentos schema 3, sem redefinir campanhas.
+- Validação de organização por tipo e testes de compatibilidade HTTP e migração.
+
+## 1.3.0 · 31/10/2026
 
 - Trinta sub-regiões ilustradas: dez de Brennford, dez de Thornwick e dez de Hallow, incluindo o novo commit MAPAS.
 - Hierarquia de mapas com breadcrumbs, miniaturas, prévias/resumos, personagens por local e filtros por ancestral.

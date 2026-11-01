@@ -14,6 +14,13 @@ import * as spatial from '../dist/features/atlas/domain.js';
 const capelaId='subregion-brennford-capela-de-pedra-negra';
 const getScene=(c,id=capelaId)=>c.regions.find(r=>r.id===id);
 
+test('novo lote de Caldris Real abre dez locais e preserva a comitiva em trânsito',()=>{
+ const c=seedState().campaigns[0],root=c.regions.find(r=>r.id==='region-caldris-real'),scenes=c.regions.filter(r=>r.worldMapId===root.mapId);
+ assert.ok(scenes.length>=10);assert.ok(scenes.some(r=>r.id==='subregion-caldris-real-castelo-real'));
+ for(const r of scenes){const image=c.maps.find(m=>m.id===r.mapId).image;assert.match(image,/^assets\/Mapa\/Regiões\/Caldris-Real-Subregioes\/Caldris Real - /);}
+ const ch=c.characters.find(ch=>ch.id==='oriane');assert.equal(ch.locationId,'greymoor');assert.equal(ch.regionId,root.id);
+});
+
 test('as dez cenas mantêm os caminhos originais, locais corretos e a hierarquia',()=>{
  const c=seedState().campaigns[0],scenes=c.regions.filter(r=>r.kind==='subregion'&&r.worldMapId===getScene(c).worldMapId);
  assert.ok(scenes.length>=10);

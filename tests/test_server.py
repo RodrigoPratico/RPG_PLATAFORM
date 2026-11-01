@@ -9,10 +9,18 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 from urllib.parse import quote
 
-from serve import AtlasHandler, ROOT, read_config
+from serve import AtlasHandler, ROOT, read_config, load_asset_aliases
 
 
 class ConfigTests(unittest.TestCase):
+    def test_rejects_unsafe_asset_aliases(self):
+        with tempfile.TemporaryDirectory() as folder:
+            assets = Path(folder) / "assets"
+            assets.mkdir()
+            (assets / "aliases.json").write_text('{"assets/x.png":"assets/../../secret.png"}')
+            with self.assertRaises(ValueError):
+                load_asset_aliases(folder)
+
     def test_default_config(self):
         config = read_config(ROOT / "config.toml")
         self.assertEqual(config["host"], "127.0.0.1")
@@ -57,6 +65,13 @@ class HTTPTests(unittest.TestCase):
             self.assertEqual(response.status, 200)
             self.assertEqual(response.headers["Content-Type"], "image/webp")
             self.assertEqual(response.read()[:4], b"RIFF")
+
+    def test_legacy_urls_serve_organized_assets_without_duplicate_files(self):
+        for source, target in load_asset_aliases(str(ROOT / "dist")).items():
+            with self.subTest(source=source), urlopen(self.base + "/" + quote(source)) as response:
+                self.assertEqual(response.status, 200)
+                self.assertEqual(response.read(), (ROOT / "dist" / target).read_bytes())
+                self.assertFalse((ROOT / "dist" / source).exists())
 
     def test_no_project_files_or_directory_listing(self):
         for path in ("/../config.toml", "/%2e%2e/serve.py", "/assets/"):

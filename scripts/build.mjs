@@ -8,6 +8,7 @@ import { deflateRawSync } from 'node:zlib';
 import { buildAssetCatalog } from './asset-catalog.mjs';
 import { collectModuleGraph } from './module-graph.mjs';
 import { assertImageBytes } from './image-signature.mjs';
+import { syncAssetPaths, validateAssetLayout } from './asset-paths.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = resolve(root, 'dist');
@@ -17,7 +18,7 @@ const ignored = new Set(['__pycache__', '.git', '.openai', '.vercel', '.env']);
 async function walk(directory) {
   const paths = [];
   for (const entry of (await readdir(directory, { withFileTypes: true })).sort((a,b)=>a.name.localeCompare(b.name))) {
-    if (ignored.has(entry.name) || entry.name.endsWith('.pyc')) continue;
+    if (ignored.has(entry.name) || entry.name.endsWith('.pyc') || entry.name.endsWith('.webp.tmp')) continue;
     const path = resolve(directory, entry.name);
     if (entry.isSymbolicLink()) throw new Error(`Link simbólico não permitido: ${relative(root,path)}`);
     if (entry.isDirectory()) paths.push(...await walk(path));
@@ -72,13 +73,14 @@ async function createZip(paths) {
 }
 
 try {
+  await syncAssetPaths(root);await validateAssetLayout(dist);
   const catalog=await buildAssetCatalog(root);
   for(const warning of catalog.warnings)console.warn(JSON.stringify({event:'asset_catalog_warning',message:warning}));
   const {seedState}=await import('../dist/app/seed.js');
   const {validateState}=await import('../dist/app/schema.js');
   const seed = validateState(seedState());
   const graph=await collectModuleGraph(dist,'app.js');
-  const required = new Set(['index.html','styles.css','features/atlas/styles.css','assets/emblem.svg',...graph.keys()]);
+  const required = new Set(['index.html','styles.css','features/atlas/styles.css','assets/Interface/emblem.svg','assets/aliases.json',...graph.keys()]);
   for (const c of seed.campaigns) {
     for (const map of c.maps) required.add(map.image);
     for (const ch of c.characters) {

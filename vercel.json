@@ -8,10 +8,141 @@
     {
       "source": "/(.*)",
       "headers": [
-        {"key": "X-Content-Type-Options", "value": "nosniff"},
-        {"key": "Referrer-Policy", "value": "same-origin"},
-        {"key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"}
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+        }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/assets/Borin.webp",
+      "destination": "/assets/Cards/Borin.webp"
+    },
+    {
+      "source": "/assets/Borin-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/Borin.webp"
+    },
+    {
+      "source": "/assets/Celina.webp",
+      "destination": "/assets/Cards/Celina.webp"
+    },
+    {
+      "source": "/assets/Celina-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/Celina.webp"
+    },
+    {
+      "source": "/assets/Elric.webp",
+      "destination": "/assets/Cards/Elric.webp"
+    },
+    {
+      "source": "/assets/Elric-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/Elric.webp"
+    },
+    {
+      "source": "/assets/Lyra.webp",
+      "destination": "/assets/Cards/Lyra.webp"
+    },
+    {
+      "source": "/assets/Lyra-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/Lyra.webp"
+    },
+    {
+      "source": "/assets/MOnzai.webp",
+      "destination": "/assets/Cards/MOnzai.webp"
+    },
+    {
+      "source": "/assets/MOnzai-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/MOnzai.webp"
+    },
+    {
+      "source": "/assets/SirCaedmon.webp",
+      "destination": "/assets/Cards/SirCaedmon.webp"
+    },
+    {
+      "source": "/assets/SirCaedmon-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/SirCaedmon.webp"
+    },
+    {
+      "source": "/assets/Varrick.webp",
+      "destination": "/assets/Cards/Varrick.webp"
+    },
+    {
+      "source": "/assets/Varrick-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/Varrick.webp"
+    },
+    {
+      "source": "/assets/Vesk.webp",
+      "destination": "/assets/Cards/Vesk.webp"
+    },
+    {
+      "source": "/assets/Vesk-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/Vesk.webp"
+    },
+    {
+      "source": "/assets/Yuki.webp",
+      "destination": "/assets/Cards/Yuki.webp"
+    },
+    {
+      "source": "/assets/Yuki-portrait.webp",
+      "destination": "/assets/Cards/Miniaturas/Yuki.webp"
+    },
+    {
+      "source": "/assets/region-caldris.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3oCaldrisReal.webp"
+    },
+    {
+      "source": "/assets/region-brennford.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3oBrennford.webp"
+    },
+    {
+      "source": "/assets/region-ashen.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3o%20Ponte%20de%20pedra.webp"
+    },
+    {
+      "source": "/assets/region-thornwick.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3othornwick.webp"
+    },
+    {
+      "source": "/assets/region-durnholm.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3oDurnholm.webp"
+    },
+    {
+      "source": "/assets/region-harrow.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3o%20Harrow.webp"
+    },
+    {
+      "source": "/assets/region-velarde.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3o%20Ducato%20Valarde.webp"
+    },
+    {
+      "source": "/assets/region-hallow.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3oHallow.webp"
+    },
+    {
+      "source": "/assets/region-brandt.webp",
+      "destination": "/assets/Mapa/Regi%C3%B5es/Regi%C3%A3oBrandt.webp"
+    },
+    {
+      "source": "/assets/caldris-world.webp",
+      "destination": "/assets/Mapa/Mapa.webp"
+    },
+    {
+      "source": "/assets/Mapa.webp",
+      "destination": "/assets/Mapa/Arquivo/Mapa%20anterior.webp"
+    },
+    {
+      "source": "/assets/emblem.svg",
+      "destination": "/assets/Interface/emblem.svg"
     }
   ]
 }

@@ -13,7 +13,7 @@ def build_package() -> Path:
         for directory in ("dist", "tests", "scripts", "docs"):
             files += sorted((ROOT / directory).rglob("*"))
         for path in files:
-            if not path.is_file() or path == target or "__pycache__" in path.parts or path.suffix == ".pyc":
+            if not path.is_file() or path == target or "__pycache__" in path.parts or path.suffix == ".pyc" or path.name.endswith(".webp.tmp"):
                 continue
             if path.is_symlink():
                 raise ValueError(f"Link simbólico não permitido: {path.name}")

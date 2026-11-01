@@ -1,6 +1,8 @@
 /** Relative, nested asset paths only. Original case, spaces and accents are preserved. */
+import {resolveAssetPath} from './asset-paths.generated.js';
 export function safeImage(src) {
  if(typeof src!=='string')return '';
+ src=resolveAssetPath(src);
  if(/^data:image\/(png|jpeg|webp);base64,[a-zA-Z0-9+/=]+$/.test(src)&&src.length<22000000)return src;
  if(!src.startsWith('assets/')||src.length>700||!/^assets\/[\p{L}\p{M}\p{N} _().–\/-]+\.(png|webp|jpe?g)$/iu.test(src))return '';
  if(src.split('/').some(part=>!part||part==='.'||part==='..'||part.trim()!==part))return '';

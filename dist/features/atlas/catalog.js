@@ -23,7 +23,10 @@ export function mergeSceneCatalog(campaign,catalog) {
   const polygon=[[x-3,y-3],[x+3,y-3],[x+3,y+3],[x-3,y+3]];
   campaign.maps.push({id:mapId,name:entry.group+' · '+entry.name,image:entry.image});
   campaign.regions.push({id:regionId,name:entry.name,summary:entry.summary||loc.description,kind:'subregion',assetKey:entry.key,worldMapId:parent.mapId,mapId,polygon,x,y,locationIds:[loc.id]});
-  for(const character of campaign.characters)if(character.locationId===loc.id&&regionForLocation(campaign,loc.id)?.id===regionId)assignRegion(campaign,character,regionId,{keepLocation:true});
+  for(const character of campaign.characters)if(character.locationId===loc.id&&regionForLocation(campaign,loc.id)?.id===regionId){
+   const worldPosition=character.positions[parent.mapId];
+   assignRegion(campaign,character,regionId,{keepLocation:true,worldPosition});
+  }
   applied.add(entry.key);changed=true;
  }
  if(changed)campaign.catalogApplied=[...applied];

@@ -5,7 +5,7 @@ import {seedState} from '../dist/app/seed.js';
 import {migrateState} from '../dist/app/migrations.js';
 import {validateState} from '../dist/app/schema.js';
 import {validPolygon,pointInPolygon} from '../dist/features/atlas/geometry.js';
-import {regionAtPoint,regionForLocation,mapCharacters,assignRegion,moveCharacter,removeRegion,positionCharacterAtLocation} from '../dist/features/atlas/domain.js';
+import {regionAtPoint,regionForLocation,belongsToRegion,mapCharacters,assignRegion,moveCharacter,removeRegion,positionCharacterAtLocation} from '../dist/features/atlas/domain.js';
 
 test('nove regiões abrem mapas distintos e todos os personagens conhecidos são distribuídos',()=>{
  const c=seedState().campaigns[0],roots=c.regions.filter(r=>r.worldMapId==='caldris');assert.equal(roots.length,9);assert.equal(new Set(c.regions.map(r=>r.mapId)).size,c.regions.length);
@@ -46,7 +46,7 @@ test('arrastar entre regiões transfere pertencimento e elimina marcadores regio
 test('escolher local regional vincula a região e preserva posições de mapas avulsos',()=>{
  const c=seedState().campaigns[0],ch=c.characters.find(v=>v.id==='lyra');c.maps.push({id:'mapa-avulso',name:'Taverna',image:'assets/Mapa.webp'});ch.positions['mapa-avulso']={x:11,y:12};
  const loc=c.locations.find(l=>l.id==='region-caldris-real-castelo');positionCharacterAtLocation(c,ch,loc.id);
- assert.equal(ch.regionId,'region-caldris-real');assert.equal(ch.locationId,loc.id);assert.deepEqual(ch.positions['mapa-avulso'],{x:11,y:12});
+ assert.ok(belongsToRegion(c,ch,'region-caldris-real'));assert.equal(ch.locationId,loc.id);assert.deepEqual(ch.positions['mapa-avulso'],{x:11,y:12});
  assignRegion(c,ch,'');assert.equal(ch.regionId,'');assert.equal(ch.positions.caldris,undefined);assert.equal(ch.locationId,'');
 });
 test('backup rejeita mapas cíclicos, referências de região ausentes e contornos malformados',()=>{
