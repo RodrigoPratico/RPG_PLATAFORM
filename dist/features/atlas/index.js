@@ -12,13 +12,15 @@ export function createAtlasFeature(ctx) {
   routes:[{id:'mapa',label:'Atlas do mundo',icon:'map',render:()=>atlas(campaign(),ui),
    beforeRender(params){
     const old=$('#map-viewport'),scroll=old?{id:$('#map-canvas')?.dataset.mapId,left:old.scrollLeft,top:old.scrollTop}:null,c=campaign();
+    const fullscreen=!!document.fullscreenElement;
     const requested=params.get('map'),root=c.maps.find(m=>!m.archived&&!domain.mapRegion(c,m.id)),next=c.maps.some(m=>m.id===requested)?requested:root?.id;
     if(next&&next!==ui.mapId){ui.mapId=next;ui.zoom=1;ui.drawing=null;}
     if(!c.maps.some(m=>m.id===ui.mapId))ui.mapId=c.maps[0]?.id||'';
-    return scroll;
+    return {scroll,fullscreen};
    },
-   afterRender(scroll){
+   afterRender({scroll,fullscreen}={}){
     if(scroll?.id===ui.mapId&&$('#map-viewport')){$('#map-viewport').scrollLeft=scroll.left;$('#map-viewport').scrollTop=scroll.top;}
+    if(fullscreen&&!document.fullscreenElement)$('.atlas-panel')?.requestFullscreen?.().catch(()=>{});
     const c=campaign();bindMap({campaign:c,mapId:ui.mapId,drawing:ui.drawing,
      onSelect:id=>{ui.selectedId=id;render();if(innerWidth<=1000)ctx.service('characters')?.showCharacter(id);},
      onMove:async(id,p,keyboard=false)=>{const mapId=ui.mapId;await commit(`Posição de ${c.characters.find(ch=>ch.id===id).name} ajustada`,next=>domain.moveCharacter(next,id,mapId,p));if(keyboard)$(`.map-token[data-character="${CSS.escape(id)}"]`)?.focus({preventScroll:true});},
