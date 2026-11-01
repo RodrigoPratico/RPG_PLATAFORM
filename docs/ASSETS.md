@@ -10,13 +10,15 @@ A referência é a organização enviada nos commits `444ec19` (`imagens`) e `28
 | Mapas regionais | `dist/assets/Mapa/Regiões/` |
 | Locais de Brennford | `dist/assets/Mapa/Regiões/Brennford-Subregioes/Brennford - <Local>.png` |
 | Locais de Thornwick | `dist/assets/Mapa/Regiões/Thornwick-Subregioes/Thornwick - <Local>.png` |
+| Locais de Caldris Real | `dist/assets/Mapa/Regiões/Caldris-Real-Subregioes/Caldris Real - <Local>.png` |
 | Locais de Hallow | `dist/assets/Mapa/Regiões/Hallow-Subregioes/Hallow - <Local>.png` |
+| Interface, ícones e brasão da aplicação | `dist/assets/Interface/` |
 | Miniaturas de fichas | `dist/assets/Cards/Miniaturas/<Nome do card>.webp` |
 | Mapa anterior arquivado | `dist/assets/Mapa/Arquivo/Mapa anterior.webp` |
 
 Os nomes regionais já existentes, inclusive `Região Ducato Valarde.png`, `Região Harrow.png`, `Região Ponte de pedra.png`, `RegiãoBrandt.png`, `RegiãoBrennford.png`, `RegiãoCaldrisReal.png`, `RegiãoDurnholm.png`, `RegiãoHallow.png` e `Regiãothornwick.png`, permanecem intactos.
 
-Derivadas WebP usam o mesmo diretório e nome-base do original. Exemplo: `Brennford - Capela de Pedra Negra.png` → `Brennford - Capela de Pedra Negra.webp`. O aplicativo usa a derivada quando existe; o PNG continua versionado. Os antigos caminhos planos são preservados para compatibilidade, mas não são o padrão para novos assets. Os arquivos em `Base de cards` são referências, não fichas novas do jogo.
+Derivadas WebP usam o mesmo diretório e nome-base do original. Exemplo: `Brennford - Capela de Pedra Negra.png` → `Brennford - Capela de Pedra Negra.webp`. O aplicativo usa a derivada quando existe; o PNG continua versionado. As cópias antigas soltas em `assets/` foram removidas; as imagens ficam apenas nas pastas por tipo. Os URLs antigos continuam funcionando por aliases, sem duplicar os arquivos. O servidor Linux e a Vercel usam o mesmo cadastro de compatibilidade. Os arquivos em `Base de cards` são referências, não fichas novas do jogo.
 
 ## Adicionar os próximos mapas de locais
 
@@ -46,3 +48,9 @@ Imagens carregadas pelo formulário da ficha são dados da campanha em IndexedDB
 A galeria abaixo foi capturada na prévia de desenvolvimento. Os registros de QA permanecem apenas nesse navegador de teste.
 
 ![Locais de Hallow na galeria do atlas](images/hallow-subregioes.jpg)
+
+## Organização obrigatória e compatibilidade
+
+Todas as imagens ficam dentro de `dist/assets/Cards/`, `dist/assets/Mapa/` ou `dist/assets/Interface/`. PNGs e WebPs correspondentes permanecem juntos; miniaturas ficam em `Cards/Miniaturas`. Arquivos temporários não fazem parte do catálogo, do Git ou do ZIP. O build rejeita imagens soltas na raiz e fora dessas categorias.
+
+`assets.config.json → legacyAliases` é a fonte dos endereços antigos. `npm run assets` e `npm run build` geram `dist/assets/aliases.json` para o servidor Linux, `dist/shared/asset-paths.generated.js` para a aplicação e as regras de reescrita em `vercel.json`. Não edite esses registros gerados manualmente. Salvamentos schema 3 também têm os caminhos antigos normalizados, preservando o conteúdo da campanha.

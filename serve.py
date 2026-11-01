@@ -8,13 +8,14 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
-from functools import partial
+from functools import partial, lru_cache
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 import logging
 from pathlib import Path
 import sys
 from typing import Any
+from urllib.parse import quote, unquote, urlsplit
 
 if sys.version_info < (3, 11):
     sys.exit("Caldris requer Python 3.11 ou superior.")
@@ -39,6 +40,25 @@ logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 
+@lru_cache(maxsize=8)
+def load_asset_aliases(directory: str) -> dict[str, str]:
+    """Legacy URLs resolve to organized files, never to another copy on disk."""
+    path = Path(directory) / "assets" / "aliases.json"
+    if not path.exists():
+        return {}
+    aliases = json.loads(path.read_text(encoding="utf-8"))
+    def valid(value: object) -> bool:
+        return (isinstance(value, str) and value.startswith("assets/")
+                and not any(character in value for character in "\\%?#:")
+                and all(part and part not in (".", "..") and part == part.strip()
+                        for part in value.split("/")))
+    if (not isinstance(aliases, dict) or len(aliases) > 1000
+            or not all(valid(source) and valid(target) and source != target and target not in aliases
+                       for source, target in aliases.items())):
+        raise ValueError("Aliases de imagens inválidos.")
+    return aliases
+
+
 def read_config(path: Path) -> dict[str, Any]:
     """Read TOML and reject non-loopback hosts, bad ports and external roots."""
     with path.open("rb") as stream:
@@ -56,6 +76,7 @@ def read_config(path: Path) -> dict[str, Any]:
         raise ValueError("O diretório deve pertencer ao projeto e conter index.html.")
     if any(path.is_symlink() for path in directory.rglob("*")):
         raise ValueError("Links simbólicos não são permitidos na pasta pública.")
+    load_asset_aliases(str(directory))
     return {"host": host, "port": port, "directory": directory}
 
 
@@ -63,6 +84,13 @@ class AtlasHandler(SimpleHTTPRequestHandler):
     """Static file handler with a narrow document root and safe response headers."""
     extensions_map = {**SimpleHTTPRequestHandler.extensions_map, ".js": "text/javascript",
                       ".webp": "image/webp", ".svg": "image/svg+xml"}
+
+    def translate_path(self, path: str) -> str:
+        source = unquote(urlsplit(path).path).lstrip("/")
+        target = load_asset_aliases(str(Path(self.directory).resolve())).get(source)
+        if target:
+            path = "/" + quote(target, safe="/")
+        return super().translate_path(path)
 
     def end_headers(self) -> None:
         self.send_header("X-Content-Type-Options", "nosniff")

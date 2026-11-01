@@ -14,7 +14,7 @@ export function upgradeState(input,catalog=sceneCatalog) {
  for(const c of next.campaigns){
   if(!Array.isArray(c.characters)||!Array.isArray(c.maps)||!Array.isArray(c.locations))throw new Error('Campanha inválida para atualização.');
   if(input.schemaVersion===1){c.regions=[];for(const ch of c.characters)ch.regionId='';if(c.id==='voz-que-devolve')installCaldrisAtlas(c);}
-  if(input.schemaVersion<3){changed=upgradeAtlasAssets(c)||changed;changed=upgradeCharacterAssets(c)||changed;}
+  changed=upgradeAtlasAssets(c)||changed;changed=upgradeCharacterAssets(c)||changed;
  }
  next.schemaVersion=SCHEMA_VERSION;
  // Validate the imported graph before resolving ancestors or merging asset data.

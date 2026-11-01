@@ -33,8 +33,11 @@ def main() -> int:
                     output = ImageOps.exif_transpose(image)
                     output.thumbnail((2400, 2400))
                     temp = target.with_suffix(".webp.tmp")
-                    output.save(temp, format="WEBP", quality=90, method=6)
-                    temp.replace(target)
+                    try:
+                        output.save(temp, format="WEBP", quality=90, method=6)
+                        temp.replace(target)
+                    finally:
+                        temp.unlink(missing_ok=True)
                 converted += 1
     except (OSError, ValueError) as error:
         print(json.dumps({"event": "asset_optimization_failed", "message": str(error)}, ensure_ascii=False))

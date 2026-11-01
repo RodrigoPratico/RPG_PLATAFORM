@@ -3,6 +3,7 @@ import {readdir,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,relative,dirname,extname,basename} from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {syncAssetPaths,validateAssetLayout} from './asset-paths.mjs';
 
 export const assetKey=value=>value.normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 export async function discoverScenes(dist,config) {
@@ -41,6 +42,8 @@ export async function buildAssetCatalog(root) {
  return catalog;
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const catalog=await buildAssetCatalog(resolve(dirname(fileURLToPath(import.meta.url)),'..'));
+ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+ await syncAssetPaths(root);await validateAssetLayout(resolve(root,'dist'));
+ const catalog=await buildAssetCatalog(root);
  console.log(JSON.stringify({event:'asset_catalog',scenes:catalog.entries.length,warnings:catalog.warnings}));
 }

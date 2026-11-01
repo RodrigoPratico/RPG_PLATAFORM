@@ -1,3 +1,4 @@
+import {resolveAssetPath} from '../../../shared/asset-paths.generated.js';
 /** The supplied Caldris map pack. Boundaries are editable editorial approximations. */
 import {assignRegion,regionForLocation} from '../domain.js';
 import {pointInPolygon} from '../geometry.js';
@@ -35,11 +36,11 @@ export function installCaldrisAtlas(campaign) {
   const previousId=uniqueId(campaign.maps,'caldris-previous');
   campaign.maps.push({...world,id:previousId,name:world.name+' · mapa anterior',archived:true});
   for(const ch of campaign.characters)if(ch.positions.caldris)ch.positions[previousId]={...ch.positions.caldris};
-  world.image='assets/caldris-world.webp';world.name='Caldris · mapa do reino';
+  world.image='assets/Mapa/Mapa.webp';world.name='Caldris · mapa do reino';
   for(const loc of campaign.locations)if(loc.mapId==='caldris'&&worldLocations[loc.id]){[loc.x,loc.y]=worldLocations[loc.id];}
   for(const data of definitions) {
     const mapId=uniqueId(campaign.maps,'caldris-'+data.id);
-    campaign.maps.push({id:mapId,name:data.name,image:`assets/${data.asset}.webp`});
+    campaign.maps.push({id:mapId,name:data.name,image:resolveAssetPath(`assets/${data.asset}.webp`)});
     const region={id:'region-'+data.id,name:data.name,worldMapId:'caldris',mapId,summary:data.summary,x:data.x,y:data.y,polygon:structuredClone(data.polygon),locationIds:data.locations.filter(id=>campaign.locations.some(l=>l.id===id))};
     campaign.regions.push(region);
     for(const [suffix,name,x,y] of points[data.id]) {

@@ -42,7 +42,7 @@ A imagem regional não é derivada por recorte do mundo: cada uma das nove image
 
 ## Locais ilustrados e hierarquia (versão 1.3)
 
-Brennford, Thornwick e Hallow têm dez locais ilustrados cada. Abra a região, aponte uma miniatura para ler o resumo e clique para abrir a imagem detalhada. A galeria abaixo do mapa oferece os mesmos destinos. O caminho acima do mapa retorna à região ou ao reino. As demais regiões seguem disponíveis enquanto suas imagens locais são produzidas.
+Brennford, Thornwick, Hallow e Caldris Real têm dez locais ilustrados cada. Abra a região, aponte uma miniatura para ler o resumo e clique para abrir a imagem detalhada. A galeria abaixo do mapa oferece os mesmos destinos. O caminho acima do mapa retorna à região ou ao reino. As demais regiões seguem disponíveis enquanto suas imagens locais são produzidas.
 
 Na ficha, **Região / sub-região atual** escolhe o lugar mais específico. O filtro da região inclui seus descendentes. Soltar um marcador sobre a área de um local no mapa pai transfere o vínculo; no mapa do local, arrastar ajusta sua posição. As posições nos mapas ancestrais são preservadas e marcadores de regiões irmãs são removidos. As coordenadas iniciais são aproximadas. Nenhum morador é transferido para uma cena apenas porque sua imagem foi adicionada.
 

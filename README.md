@@ -37,7 +37,7 @@ Configuração opcional em `config.toml`. O servidor escuta apenas no loopback, 
 ## Funcionalidades
 
 - Campanhas independentes, com nome, subtítulo e calendário editáveis.
-- Atlas com mapa do reino, nove mapas regionais e trinta locais ilustrados de Brennford, Thornwick e Hallow enviados pelo autor. Apontar ou focar uma região mostra resumo, prévia do mapa e personagens; clicar abre a região. Há navegação por reino → região → local, resumos e prévias, miniaturas selecionáveis, seletor de mapas, zoom de 100–300%, tela cheia e camadas independentes.
+- Atlas com mapa do reino, nove mapas regionais e quarenta locais ilustrados de Brennford, Thornwick, Hallow e Caldris Real enviados pelo autor. Apontar ou focar uma região mostra resumo, prévia do mapa e personagens; clicar abre a região. Há navegação por reino → região → local, resumos e prévias, miniaturas selecionáveis, seletor de mapas, zoom de 100–300%, tela cheia e camadas independentes.
 - Marcadores pequenos arrastáveis; a ficha inteira aparece ao passar o mouse. Setas do teclado ajustam posições em 1%; Enter seleciona o personagem. Em telas pequenas o toque abre a ficha completa.
 - Fichas com imagem, miniatura dos retratos iniciais, função, idade, rank, cinco atributos, facção, lealdade, resumo, relações e notas do mestre.
 - Personagens com uma região atual e posições independentes no reino e no mapa regional. Arrastar entre regiões no mapa do reino transfere o vínculo e define o local geral; soltar sobre um local ilustrado transfere o vínculo à sub-região; arrastar dentro de um mapa de local ajusta a posição. O filtro da região também inclui personagens de seus locais.
@@ -64,7 +64,7 @@ Qualquer pessoa com acesso ao perfil local do navegador pode ler seu banco. As �
 ## Estado inicial e fidelidade
 
 - 21 personagens; nove com as imagens enviadas. Os demais têm iniciais, sem retratos inventados.
-- Mapa geral, nove mapas regionais, trinta mapas de locais (dez de Brennford, dez de Thornwick e dez de Hallow) e o mapa anterior arquivado. Nove contornos regionais e trinta conexões para locais ilustrados, ajustáveis pelo mestre, com 86 localidades/pontos de interesse. O Campo do Leão permanece uma posição proposta.
+- Mapa geral, nove mapas regionais, quarenta mapas de locais (dez de Brennford, dez de Thornwick, dez de Hallow e dez de Caldris Real) e o mapa anterior arquivado. Nove contornos regionais e quarenta conexões para locais ilustrados, ajustáveis pelo mestre, com 93 localidades/pontos de interesse. O Campo do Leão permanece uma posição proposta.
 - Vinte personagens distribuídos conforme o estado da campanha. A comitiva de Oriane fica em trânsito para Greymoor; Yuki fica em Durnholm, apesar de sua origem em Hallow. Rorik segue sem região e sem marcador por paradeiro desconhecido.
 - Quatro capítulos resumidos concluídos e o capítulo V como rascunho.
 - Seis facções, seis registros do compêndio e doze tramas/pendências.
@@ -91,6 +91,8 @@ dist/
   shared/                componentes, validação básica e contratos
   assets/Cards/          fichas e Miniaturas/
   assets/Mapa/           mapa geral, Regiões/ e *-Subregioes/
+  assets/Interface/      ícones e brasão da aplicação
+  assets/aliases.json    compatibilidade de URLs sem imagens duplicadas
 assets.config.json       associação de pastas, posições e resumos
 scripts/asset-catalog.mjs descoberta automática de novos mapas locais
 scripts/module-graph.mjs verificação de imports e ciclos
