@@ -1,7 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {SCHEMA_VERSION,validateState,emptyCampaign,emptyCharacter,removeCharacter,positionAtLocation,safeImage,escapeHTML,uid} from '../dist/model.js';
-import {seedState} from '../dist/seed.js';
+import {SCHEMA_VERSION,validateState} from '../dist/app/schema.js';
+import {emptyCampaign} from '../dist/features/campaigns/domain.js';
+import {emptyCharacter} from '../dist/features/characters/domain.js';
+import {removeCharacter} from '../dist/app/campaign-operations.js';
+import {positionAtLocation} from '../dist/features/atlas/domain.js';
+import {safeImage} from '../dist/shared/assets.js';
+import {escapeHTML,uid} from '../dist/shared/primitives.js';
+import {seedState} from '../dist/app/seed.js';
 
 test('campanha inicial preserva fatos, vínculos e incertezas',()=>{
  const s=validateState(seedState());const c=s.campaigns[0];

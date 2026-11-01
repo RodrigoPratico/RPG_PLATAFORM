@@ -41,8 +41,8 @@ O primeiro início gera o pacote Linux de download se ele estiver ausente. É no
 ## Usar a campanha
 
 - No mapa do reino, aponte para uma região para ver seu resumo; clique para abrir seu mapa próprio.
-- Use **Voltar ao mapa do reino** para retornar. Personagens são mostrados por região.
-- Arraste retratos no mapa do reino para transferi-los entre regiões. Dentro da região, arrastar ajusta apenas a posição.
+- Use o caminho acima do mapa para retornar à região ou ao reino. Personagens são mostrados por região.
+- Arraste retratos no mapa do reino para transferi-los entre regiões. Soltar sobre um local ilustrado no mapa regional transfere para a sub-região; dentro do mapa do local, arrastar ajusta a posição.
 - Em **Capítulos**, crie e edite textos, vincule personagens e use **Salvar alterações**.
 - Em **Personagens**, edite fichas, imagens, região, local e contexto. O filtro permite ver apenas os personagens de uma região.
 - Em **Universo e backups**, edite regiões, carregue mapas e crie outras campanhas independentes. O guia de mapeamento fica em [REGIOES.md](REGIOES.md).
@@ -63,7 +63,7 @@ git pull --ff-only
 python3 serve.py
 ```
 
-O comando `cd` parte da pasta onde o repositório foi clonado; se já estiver dentro de `RPG_PLATAFORM`, execute apenas os dois últimos comandos. Recarregue o navegador após atualizar. A versão 2 migra o salvamento antigo de Caldris e preserva seus capítulos e notas, mantendo o mapa anterior arquivado. Se você alterou arquivos do código e o Git recusar a atualização, preserve essas alterações antes de resolver o conflito; não apague o banco do navegador.
+O comando `cd` parte da pasta onde o repositório foi clonado; se já estiver dentro de `RPG_PLATAFORM`, execute apenas os dois últimos comandos. Recarregue o navegador após atualizar. A versão 1.3 (schema 3) migra salvamentos antigos de Caldris das versões 1 e 2 e preserva seus capítulos e notas, mantendo o mapa anterior arquivado. Se você alterou arquivos do código e o Git recusar a atualização, preserve essas alterações antes de resolver o conflito; não apague o banco do navegador.
 
 ## Porta e configuração
 
@@ -85,3 +85,5 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
 Ou execute `make test` se tiver GNU Make. Para reproduzir o build estático e o pacote Linux, execute `npm run build`; não é necessário `npm install`.
+
+Para adicionar imagens de novas sub-regiões ao código, siga [ASSETS.md](ASSETS.md). Execute `npm run assets` antes de abrir a versão local com os novos arquivos; o catálogo gerado deve acompanhar o commit.

@@ -1,0 +1,18 @@
+import {escapeHTML as e} from './primitives.js';
+import {safeImage} from './assets.js';
+export const $ = (selector,root=document)=>root.querySelector(selector);
+export const $$ = (selector,root=document)=>[...root.querySelectorAll(selector)];
+const paths={map:'<path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/>',people:'<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-17a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 4v3"/>',book:'<path d="M4 3h13a3 3 0 0 1 3 3v15H6a3 3 0 0 1-3-3V6a3 3 0 0 1 1-3Zm0 13h16M8 7h8m-8 4h6"/>',flag:'<path d="M5 22V3m0 1c5-4 9 4 14 0v11c-5 4-9-4-14 0"/>',spark:'<path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/>',sword:'<path d="m4 3 14 14M3 4l1-1h4l11 11-5 5L3 8V4Zm10 16 6-6m-1 5 4 4M3 21 21 3M3 3l18 18"/>',settings:'<circle cx="12" cy="12" r="3"/><path d="m9 3 6 0 1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1Z"/>',pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',arrow:'<path d="M5 12h14m-5-5 5 5-5 5"/>',search:'<circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/>',plus:'<path d="M12 4v16M4 12h16"/>',moon:'<path d="M20 16A9 9 0 0 1 8 4a9 9 0 1 0 12 12Z"/>',check:'<path d="m5 12 4 4L19 6"/>'};
+export function icon(name) {return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.spark}</svg>`;}
+export function avatar(c,className='avatar') {const src=className==='full-card'?c.image:(c.portrait||c.image);return safeImage(src)?`<img class="${className}" src="${e(safeImage(src))}" alt="${e(c.name)}" loading="lazy" draggable="false">`:`<span class="${className} initials" aria-label="${e(c.name)}">${e(c.name.split(' ').map(s=>s[0]).slice(0,2).join(''))}</span>`;}
+export function pageHeading(kicker,title,description,actions='') {return `<div class="page-heading"><div><div class="eyebrow">${e(kicker)}</div><h1>${e(title)}</h1><p>${e(description)}</p></div><div class="heading-actions">${actions}</div></div>`;}
+export function empty(title,body,action='') {return `<div class="empty">${icon('spark')}<h2>${e(title)}</h2><p>${e(body)}</p>${action}</div>`;}
+export function field(label,name,value='',options={}) {
+ const {type='text',required=false,max=200000}=options; const id=`field-${name}`;
+ const attributes=`name="${e(name)}" id="${e(id)}" ${required?'required':''} maxlength="${max}"`;
+ return `<label class="field" for="${e(id)}"><span>${e(label)}</span>${type==='textarea'?`<textarea ${attributes} rows="${options.rows||5}">${e(value)}</textarea>`:`<input ${attributes} type="${type}" value="${e(value)}" ${type==='number'?'min="0" max="9999999" step="1"':''}>`}</label>`;
+}
+export function selectField(label,name,value,options) {return `<label class="field" for="field-${e(name)}"><span>${e(label)}</span><select id="field-${e(name)}" name="${e(name)}">${options.map(([v,t])=>`<option value="${e(v)}" ${v===value?'selected':''}>${e(t)}</option>`).join('')}</select></label>`;}
+export function fileField(label,name) {return `<label class="field"><span>${e(label)}</span><input type="file" name="${e(name)}" accept="image/png,image/jpeg,image/webp"><small>PNG, JPEG ou WebP · até 15 MB</small></label>`;}
+export function badge(text) {return `<span class="badge ${/Urgente|tensão/.test(text)?'danger':/Concluído|Cânone|Fundado/.test(text)?'green':''}">${e(text)}</span>`;}
+export function download(blob,name) {const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);}

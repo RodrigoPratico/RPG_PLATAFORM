@@ -1,0 +1,2 @@
+export const MAX_BACKUP_MB=256;
+export const MAX_BACKUP_BYTES=MAX_BACKUP_MB*1024*1024;

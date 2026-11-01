@@ -1,15 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {seedState} from '../dist/seed.js';
-import {migrateState} from '../dist/migrations.js';
-import {validateState,emptyCampaign} from '../dist/model.js';
-import {validPolygon,pointInPolygon} from '../dist/geometry.js';
-import {regionAtPoint,regionForLocation,mapCharacters,assignRegion,moveCharacter,removeRegion,positionCharacterAtLocation} from '../dist/regions.js';
+import {seedState} from '../dist/app/seed.js';
+import {migrateState} from '../dist/app/migrations.js';
+import {validateState} from '../dist/app/schema.js';
+import {validPolygon,pointInPolygon} from '../dist/features/atlas/geometry.js';
+import {regionAtPoint,regionForLocation,mapCharacters,assignRegion,moveCharacter,removeRegion,positionCharacterAtLocation} from '../dist/features/atlas/domain.js';
 
 test('nove regiões abrem mapas distintos e todos os personagens conhecidos são distribuídos',()=>{
- const c=seedState().campaigns[0];assert.equal(c.regions.length,9);assert.equal(new Set(c.regions.map(r=>r.mapId)).size,9);
- for(const r of c.regions){assert.equal(validPolygon(r.polygon),true);assert.equal(regionAtPoint(c,'caldris',{x:r.x,y:r.y}).id,r.id);assert.ok(c.maps.find(m=>m.id===r.mapId));}
+ const c=seedState().campaigns[0],roots=c.regions.filter(r=>r.worldMapId==='caldris');assert.equal(roots.length,9);assert.equal(new Set(c.regions.map(r=>r.mapId)).size,c.regions.length);
+ for(const r of roots){assert.equal(validPolygon(r.polygon),true);assert.equal(regionAtPoint(c,'caldris',{x:r.x,y:r.y}).id,r.id);assert.ok(c.maps.find(m=>m.id===r.mapId));}
  assert.equal(c.characters.filter(ch=>ch.regionId).length,20);
  const yuki=c.characters.find(ch=>ch.id==='yuki');assert.equal(yuki.regionId,'region-durnholm-montanhas');
  const unknown=c.characters.find(ch=>ch.id==='rorik');assert.equal(unknown.regionId,'');assert.deepEqual(unknown.positions,{});
@@ -24,16 +24,16 @@ test('geometria aceita fronteiras e contornos côncavos, rejeita cruzamentos e n
 test('salvamento versão 1 recebe atlas sem perder capítulos, notas, atributos ou mapas anteriores',()=>{
  const old=JSON.parse(readFileSync(new URL('./fixtures/campaign-v1.json',import.meta.url),'utf8'));
  const untouched=structuredClone(old);const updated=migrateState(old),c=updated.campaigns[0];
- assert.deepEqual(old,untouched);assert.equal(updated.revision,7);assert.equal(updated.schemaVersion,2);
+ assert.deepEqual(old,untouched);assert.equal(updated.revision,7);assert.equal(updated.schemaVersion,3);
  assert.deepEqual(c.chapters,old.campaigns[0].chapters);assert.equal(c.characters[0].notes,old.campaigns[0].characters[0].notes);
  assert.deepEqual(c.characters[0].attributes,old.campaigns[0].characters[0].attributes);
- assert.equal(c.maps.find(m=>m.id==='caldris').image,'assets/caldris-world.webp');
- const archive=c.maps.find(m=>m.archived);assert.equal(archive.image,'assets/Mapa.webp');assert.deepEqual(c.characters[0].positions[archive.id],old.campaigns[0].characters[0].positions.caldris);
+ assert.equal(c.maps.find(m=>m.id==='caldris').image,'assets/Mapa/Mapa.webp');
+ const archive=c.maps.find(m=>m.archived);assert.equal(archive.image,'assets/Mapa/Arquivo/Mapa anterior.webp');assert.deepEqual(c.characters[0].positions[archive.id],old.campaigns[0].characters[0].positions.caldris);
  assert.deepEqual(migrateState(updated),updated);
 });
 test('outras campanhas são migradas sem receber personagens ou mapas de Caldris',()=>{
  const old=JSON.parse(readFileSync(new URL('./fixtures/campaign-v1.json',import.meta.url),'utf8'));
- old.campaigns[0].id='mundo-personalizado';const c=migrateState(old).campaigns[0];assert.deepEqual(c.regions,[]);assert.equal(c.maps.length,1);assert.equal(c.maps[0].image,'assets/Mapa.webp');
+ old.campaigns[0].id='mundo-personalizado';const c=migrateState(old).campaigns[0];assert.deepEqual(c.regions,[]);assert.equal(c.maps.length,1);assert.equal(c.maps[0].image,'assets/Mapa/Arquivo/Mapa anterior.webp');
 });
 test('arrastar entre regiões transfere pertencimento e elimina marcadores regionais antigos',()=>{
  const state=seedState(),c=state.campaigns[0];const borin=c.characters.find(ch=>ch.id==='borin');const previous=c.regions.find(r=>r.id===borin.regionId);

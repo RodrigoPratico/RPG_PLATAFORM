@@ -1,5 +1,15 @@
 # Histórico de versões
 
+## 1.3.0 · 01/11/2026
+
+- Trinta sub-regiões ilustradas: dez de Brennford, dez de Thornwick e dez de Hallow, incluindo o novo commit MAPAS.
+- Hierarquia de mapas com breadcrumbs, miniaturas, prévias/resumos, personagens por local e filtros por ancestral.
+- Organização por funcionalidades com composição explícita de rotas, ações, serviços e validadores.
+- Padrão de assets Cards/Mapa preservado, originais intactos e derivadas WebP nas mesmas pastas.
+- Catálogo por convenção de pastas para imagens futuras, com configuração de associação e coordenadas.
+- Migração ao schema 3 sem redefinir capítulos, fichas, notas, imagens pessoais ou posições.
+- Testes de hierarquia, migração, catálogo, limites de módulos, conflitos e contrato HTTP.
+
 ## 1.2.0 · 31/10/2026
 
 - Novo mapa do reino com nove regiões clicáveis e os nove mapas regionais fornecidos.

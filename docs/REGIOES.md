@@ -26,7 +26,7 @@ Cada mapa regional possui uma conexão de origem. Ciclos, mapas ausentes e polí
 
 ## Dados e migração
 
-A versão 2 mantém o mesmo banco IndexedDB, sem apagar o armazenamento. Ao abrir um salvamento da versão 1, a atualização ocorre numa transação com controle de revisão. O mapa anterior e suas posições ficam no seletor como **mapa anterior**. Capítulos, notas, atributos e imagens das fichas são preservados. O novo atlas é aplicado apenas à campanha inicial reconhecida de Caldris; outros universos continuam independentes.
+A versão 1.3 (schema 3) mantém o mesmo banco IndexedDB, sem apagar o armazenamento. Ao abrir um salvamento das versões 1 ou 2, a atualização ocorre numa transação com controle de revisão. O mapa anterior e suas posições ficam no seletor como **mapa anterior**. Capítulos, notas, atributos e imagens das fichas são preservados. O novo atlas é aplicado apenas à campanha inicial reconhecida de Caldris; outros universos continuam independentes.
 
 Backups antigos passam pela mesma migração antes de serem importados. A restauração anterior também aceita o schema antigo. Não há sincronização entre domínios: exporte/importe mantenha sempre um backup externo. O backup atual embute todas as imagens dos mapas, inclusive os regionais.
 
@@ -39,3 +39,11 @@ character.positions[mapId] = {x, y};
 ```
 
 A imagem regional não é derivada por recorte do mundo: cada uma das nove imagens fornecidas é preservada como mapa próprio. Novos mundos usam o mesmo editor; dados específicos de Caldris ficam isolados em `dist/atlas-data.js`.
+
+## Locais ilustrados e hierarquia (versão 1.3)
+
+Brennford, Thornwick e Hallow têm dez locais ilustrados cada. Abra a região, aponte uma miniatura para ler o resumo e clique para abrir a imagem detalhada. A galeria abaixo do mapa oferece os mesmos destinos. O caminho acima do mapa retorna à região ou ao reino. As demais regiões seguem disponíveis enquanto suas imagens locais são produzidas.
+
+Na ficha, **Região / sub-região atual** escolhe o lugar mais específico. O filtro da região inclui seus descendentes. Soltar um marcador sobre a área de um local no mapa pai transfere o vínculo; no mapa do local, arrastar ajusta sua posição. As posições nos mapas ancestrais são preservadas e marcadores de regiões irmãs são removidos. As coordenadas iniciais são aproximadas. Nenhum morador é transferido para uma cena apenas porque sua imagem foi adicionada.
+
+Para novos arquivos, veja [ASSETS.md](ASSETS.md). A migração aceita schemas 1 e 2 e grava schema 3 sem mudar o banco IndexedDB. Uma sub-região excluída não é recriada pelo catálogo na próxima abertura. Remover uma conexão pai remove as conexões descendentes, preservando mapas, fichas e textos como registros editáveis.

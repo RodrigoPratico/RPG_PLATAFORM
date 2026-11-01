@@ -5,8 +5,9 @@ import { readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { resolve, relative, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { deflateRawSync } from 'node:zlib';
-import { seedState } from '../dist/seed.js';
-import { validateState } from '../dist/model.js';
+import { buildAssetCatalog } from './asset-catalog.mjs';
+import { collectModuleGraph } from './module-graph.mjs';
+import { assertImageBytes } from './image-signature.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = resolve(root, 'dist');
@@ -20,9 +21,19 @@ async function walk(directory) {
     const path = resolve(directory, entry.name);
     if (entry.isSymbolicLink()) throw new Error(`Link simbólico não permitido: ${relative(root,path)}`);
     if (entry.isDirectory()) paths.push(...await walk(path));
-    else if (path !== target) paths.push(path);
+    else if (path !== target && await includeInPackage(path)) paths.push(path);
   }
   return paths;
+}
+
+async function includeInPackage(path) {
+  const name=relative(root,path).replaceAll('\\','/');
+  if(name.startsWith('dist/assets/Cards/Base de cards/'))return false;
+  if(/\.(png|jpe?g)$/i.test(name)) {
+    const optimized=path.replace(/\.(png|jpe?g)$/i,'.webp');
+    try { if((await stat(optimized)).isFile())return false; } catch(err) { if(err.code!=='ENOENT')throw err; }
+  }
+  return true;
 }
 
 function crc32(bytes) {
@@ -61,8 +72,13 @@ async function createZip(paths) {
 }
 
 try {
+  const catalog=await buildAssetCatalog(root);
+  for(const warning of catalog.warnings)console.warn(JSON.stringify({event:'asset_catalog_warning',message:warning}));
+  const {seedState}=await import('../dist/app/seed.js');
+  const {validateState}=await import('../dist/app/schema.js');
   const seed = validateState(seedState());
-  const required = new Set(['index.html','app.js','styles.css','model.js','repository.js','seed.js','ui.js','views.js','map.js','regions.js','geometry.js','atlas-data.js','migrations.js','assets/emblem.svg']);
+  const graph=await collectModuleGraph(dist,'app.js');
+  const required = new Set(['index.html','styles.css','features/atlas/styles.css','assets/emblem.svg',...graph.keys()]);
   for (const c of seed.campaigns) {
     for (const map of c.maps) required.add(map.image);
     for (const ch of c.characters) {
@@ -72,11 +88,12 @@ try {
   }
   for (const path of required) {
     if (!(await stat(resolve(dist,path))).isFile()) throw new Error(`Arquivo estático ausente: ${path}`);
+    if(/\.(png|webp|jpe?g)$/i.test(path))assertImageBytes(await readFile(resolve(dist,path)),path);
   }
-  const paths = ['README.md','Makefile','serve.py','config.toml','package.json','CHANGELOG.md','vercel.json'].map(path=>resolve(root,path));
+  const paths = ['README.md','AGENTS.md','Makefile','serve.py','config.toml','assets.config.json','package.json','CHANGELOG.md','vercel.json'].map(path=>resolve(root,path));
   for (const directory of ['dist','scripts','tests','docs']) paths.push(...await walk(resolve(root,directory)));
   await createZip(paths.sort());
-  console.log(JSON.stringify({event:'build_complete',staticFiles:required.size,linuxPackageBytes:(await stat(target)).size,output:'dist'}));
+  console.log(JSON.stringify({event:'build_complete',modules:graph.size,scenes:catalog.entries.length,staticFiles:required.size,linuxPackageBytes:(await stat(target)).size,output:'dist'}));
 } catch (error) {
   console.error(JSON.stringify({event:'build_failed',message:error.message}));
   process.exitCode = 1;

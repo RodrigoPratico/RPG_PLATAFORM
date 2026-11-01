@@ -1,0 +1,201 @@
+{
+  "parents": {
+    "caldris-real": "region-caldris-real",
+    "caldris": "region-caldris-real",
+    "brennford": "region-brennford-velmoor",
+    "velmoor": "region-brennford-velmoor",
+    "thornwick": "region-thornwick-marca",
+    "marca-oriental": "region-thornwick-marca",
+    "durnholm": "region-durnholm-montanhas",
+    "harrow": "region-harrow",
+    "velarde": "region-velarde",
+    "ducato-valarde": "region-velarde",
+    "hallow": "region-hallow",
+    "brandt": "region-brandt-ducados",
+    "rio-ashen": "region-ashen-dunmere",
+    "ponte-de-pedra": "region-ashen-dunmere",
+    "dunmere": "region-ashen-dunmere"
+  },
+  "placements": {
+    "brennford-capela-de-pedra-negra": {
+      "locationId": "region-brennford-velmoor-capela",
+      "x": 64,
+      "y": 22,
+      "summary": "Capela de pedra negra mais antiga que Brennford. Aqui Monzai devolveu os olhos de Celine."
+    },
+    "brennford-filial-da-guilda": {
+      "locationId": "region-brennford-velmoor-guilda",
+      "x": 75,
+      "y": 27,
+      "summary": "Filial da Guilda em Brennford. O registro público de Monzai começou no Rank 0."
+    },
+    "brennford-portao-de-garrick": {
+      "locationId": "region-brennford-velmoor-portao",
+      "x": 65,
+      "y": 38,
+      "summary": "Portão e acesso à vila. Garrick cuida das rondas sob o comando de Lyra."
+    },
+    "brennford-campos-de-trigo-azulado": {
+      "locationId": "region-brennford-velmoor-trigo",
+      "x": 86,
+      "y": 46,
+      "summary": "Campos de trigo-azulado nos arredores da vila."
+    },
+    "brennford-ruinas-das-raizes": {
+      "locationId": "region-brennford-velmoor-ruinas",
+      "x": 50,
+      "y": 77,
+      "summary": "Ruínas entre as raízes antigas de Velmoor. O mestre pode registrar aqui seus segredos e acontecimentos."
+    },
+    "brennford-moinho-da-colina-oeste": {
+      "locationId": "region-brennford-velmoor-moinho",
+      "x": 26,
+      "y": 20,
+      "summary": "Moinho da Colina Oeste, ponto de referência do mapa de Brennford."
+    },
+    "brennford-estalagem-da-marta": {
+      "locationId": "region-brennford-velmoor-estalagem",
+      "x": 82,
+      "y": 30,
+      "summary": "Estalagem da Marta, dentro de Brennford. Lugar para registrar encontros e conversas da campanha."
+    },
+    "brennford-riacho-da-casca-cinzenta": {
+      "locationId": "region-brennford-velmoor-riacho",
+      "x": 11,
+      "y": 58,
+      "summary": "Riacho entre as árvores de casca cinzenta da Floresta de Velmoor."
+    },
+    "brennford-sulco-de-borin": {
+      "locationId": "region-brennford-velmoor-sulco",
+      "x": 92,
+      "y": 43,
+      "summary": "Marca deixada pela espada arremessada por Borin, ainda visível nos campos."
+    },
+    "brennford-trilha-dos-cacadores": {
+      "locationId": "region-brennford-velmoor-trilha",
+      "x": 43,
+      "y": 65,
+      "summary": "Trilha dos caçadores entre as árvores de Velmoor, conforme o mapa regional."
+    },
+    "thornwick-catedral-das-passagens": {
+      "locationId": "region-thornwick-marca-catedral",
+      "x": 70,
+      "y": 42,
+      "summary": "Catedral entregue por Aldous Mallory sem condições. A Igreja das Passagens foi absorvida após a confissão pública do arcebispo."
+    },
+    "thornwick-cripta-dos-nomes": {
+      "locationId": "region-thornwick-marca-cripta",
+      "x": 84,
+      "y": 48,
+      "summary": "Antigo arquivo dos Nomes. O Guardião foi desfeito, os registros foram esvaziados e Mathis Thorne foi resgatado."
+    },
+    "thornwick-guilda-central": {
+      "locationId": "region-thornwick-marca-guilda",
+      "x": 58,
+      "y": 63,
+      "summary": "Guilda Central de Thornwick, ponto de referência para comércio, rotas e tratados no mapa regional."
+    },
+    "thornwick-mercado-do-sal": {
+      "locationId": "region-thornwick-marca-porto",
+      "x": 67,
+      "y": 80,
+      "summary": "Mercado junto ao porto de Thornwick, ligado ao sal, à pesca e às mercadorias do Mar de Varon."
+    },
+    "thornwick-portao-oriental": {
+      "locationId": "region-thornwick-marca-portao",
+      "x": 91,
+      "y": 66,
+      "summary": "Portão Oriental de Thornwick, ligado à estrada de Dunmere. A posição cartográfica é aproximada e editável."
+    },
+    "thornwick-praca-dos-1-200": {
+      "locationId": "region-thornwick-marca-praca",
+      "x": 57,
+      "y": 50,
+      "summary": "Praça onde Monzai curou 1.200 pessoas de uma vez. Anneke Ritter recuperou a voz após 49 anos."
+    },
+    "thornwick-patio-leste": {
+      "locationId": "region-thornwick-marca-patio",
+      "x": 75,
+      "y": 62,
+      "summary": "Pátio onde Yuki passou seis invernos numa jaula, até Monzai abrir sua coleira. Yuki agora está em Durnholm."
+    },
+    "thornwick-torre-do-marques": {
+      "locationId": "region-thornwick-marca-torre",
+      "x": 55,
+      "y": 31,
+      "summary": "Sede da autoridade da Marca Oriental. Varrick Thorne governa Thornwick e escreve aos quatro duques indecisos."
+    },
+    "thornwick-tribunal-das-passagens": {
+      "locationId": "region-thornwick-marca-tribunal",
+      "x": 83,
+      "y": 58,
+      "summary": "Antigo Tribunal das Passagens. Foi desfeito após o colapso da velha Igreja e a abolição do preço sagrado."
+    },
+    "thornwick-tres-torres-em-espiral": {
+      "locationId": "region-thornwick-marca-torres",
+      "x": 41,
+      "y": 49,
+      "summary": "Três Torres em Espiral, marco arquitetônico da Catedral das Passagens e do mapa de Thornwick."
+    },
+    "hallow-cascatas-do-abismo": {
+      "locationId": "region-hallow-cascatas-do-abismo",
+      "x": 52,
+      "y": 80,
+      "summary": "Cascatas entre os desfiladeiros de Hallow, conforme a nova imagem fornecida. Contexto narrativo aberto para o mestre."
+    },
+    "hallow-cidade-central": {
+      "locationId": "region-hallow-cidade",
+      "x": 45,
+      "y": 53,
+      "summary": "Centro de Hallow, território dos clãs independentes. Origem de Yuki, que atualmente está em Durnholm."
+    },
+    "hallow-costa-cinzenta": {
+      "locationId": "region-hallow-costa-cinzenta",
+      "x": 15,
+      "y": 40,
+      "summary": "Costa rochosa de Hallow, diante do Mar das Tempestades. Posição aproximada no mapa."
+    },
+    "hallow-cumes-sangrentos": {
+      "locationId": "region-hallow-cumes",
+      "x": 40,
+      "y": 27,
+      "summary": "Montanhas avermelhadas que marcam a paisagem de Hallow e os caminhos entre os clãs."
+    },
+    "hallow-ponta-do-ferro": {
+      "locationId": "region-hallow-ponta-do-ferro",
+      "x": 26,
+      "y": 75,
+      "summary": "Fortificação na Ponta do Ferro, conforme a imagem fornecida. O estado atual pode ser registrado pelo mestre."
+    },
+    "hallow-porto-das-cinzas": {
+      "locationId": "region-hallow-porto",
+      "x": 28,
+      "y": 56,
+      "summary": "Porto entre as escarpas da Costa Cinzenta, ponto de referência do mapa de Hallow."
+    },
+    "hallow-rota-dos-clas": {
+      "locationId": "region-hallow-rota",
+      "x": 69,
+      "y": 55,
+      "summary": "Caminhos que atravessam os territórios dos clãs de Hallow. Fronteiras e posições são aproximadas."
+    },
+    "hallow-totem-do-uivo": {
+      "locationId": "region-hallow-totem",
+      "x": 85,
+      "y": 42,
+      "summary": "Totem do Uivo, marco cultural e geográfico das terras de Hallow."
+    },
+    "hallow-vale-da-matilha": {
+      "locationId": "region-hallow-vale",
+      "x": 71,
+      "y": 29,
+      "summary": "Vale da Matilha, entre as montanhas e as rotas dos clãs. Nenhum ocupante atual foi presumido."
+    },
+    "hallow-vigia-das-agulhas": {
+      "locationId": "region-hallow-vigia-das-agulhas",
+      "x": 80,
+      "y": 23,
+      "summary": "Vigia entre as agulhas montanhosas de Hallow, conforme a imagem fornecida. Contexto editável pelo mestre."
+    }
+  }
+}

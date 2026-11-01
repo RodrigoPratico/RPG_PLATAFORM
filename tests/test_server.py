@@ -7,6 +7,7 @@ from threading import Thread
 import unittest
 from urllib.error import HTTPError
 from urllib.request import urlopen
+from urllib.parse import quote
 
 from serve import AtlasHandler, ROOT, read_config
 
@@ -47,6 +48,15 @@ class HTTPTests(unittest.TestCase):
             self.assertEqual(response.headers["X-Content-Type-Options"], "nosniff")
         with urlopen(self.base + "/app.js") as response:
             self.assertIn("javascript", response.headers["Content-Type"])
+        with urlopen(self.base + "/features/atlas/data/catalog.generated.js") as response:
+            self.assertIn("javascript", response.headers["Content-Type"])
+
+    def test_nested_asset_with_spaces_and_accents(self):
+        path = "/assets/Mapa/Regiões/Brennford-Subregioes/Brennford - Capela de Pedra Negra.webp"
+        with urlopen(self.base + quote(path)) as response:
+            self.assertEqual(response.status, 200)
+            self.assertEqual(response.headers["Content-Type"], "image/webp")
+            self.assertEqual(response.read()[:4], b"RIFF")
 
     def test_no_project_files_or_directory_listing(self):
         for path in ("/../config.toml", "/%2e%2e/serve.py", "/assets/"):
