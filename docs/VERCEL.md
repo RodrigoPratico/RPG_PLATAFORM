@@ -1,5 +1,43 @@
 # Publicar RPG_PLATAFORM na Vercel
 
+## Estado da integração — 4 de novembro de 2026
+
+| Item | Configuração atual |
+| --- | --- |
+| Equipe Vercel | `rodrimir-projects` |
+| Projeto do jogo | `rpg-plataform` |
+| ID do projeto do jogo | `prj_IIC6zd52pz8WyjOxWVK5UkMpciUm` |
+| Repositório conectado | `RodrigoPratico/RPG_PLATAFORM` |
+| Branch utilizada na produção | `main` |
+| Integração GitHub da organização | Instalada e visível para a Vercel |
+| Primeira publicação no projeto novo | `3a7476ebe06ccb0224c0234b042696497dcbe1ca`, estado **Ready**, ambiente **Production** |
+| Domínio `www.monzai.com.br` | Ainda associado ao projeto antigo; transferência pendente |
+| Domínio `monzai.com.br` | Ainda no projeto antigo, redirecionando para `www.monzai.com.br` com **308** |
+
+Acesse o [projeto correto na Vercel](https://vercel.com/rodrimir-projects/rpg-plataform). A integração Git foi confirmada pela API: o projeto novo acompanha o RPG. O projeto antigo `tempo-claro-tcc-tsi` continua conectado a `Rodrimir/tempo-claro-tcc-tsi`; suas publicações manuais do jogo não haviam trocado esse vínculo.
+
+### Etapa pendente: mover os domínios
+
+O build do projeto novo foi validado antes de tentar transferir o endereço. Adicionar `www.monzai.com.br` ao novo projeto retornou **409 — domain_already_in_use**, pois ele já pertence ao projeto antigo. O plugin utilizado não disponibiliza a operação de mover domínio entre projetos; adicionar um alias a um deployment não substitui essa configuração permanente.
+
+1. Abra [Settings → Domains do projeto antigo](https://vercel.com/rodrimir-projects/tempo-claro-tcc-tsi/settings/domains).
+2. Use a opção **Move** ou **Move to another project** de `www.monzai.com.br` e selecione **rpg-plataform**, na mesma equipe.
+3. Mova também `monzai.com.br`, mantendo o redirecionamento **308** para `www.monzai.com.br`.
+4. Em [Settings → Domains do RPG](https://vercel.com/rodrimir-projects/rpg-plataform/settings/domains), confirme os dois endereços, a verificação e o deployment de produção que os atende.
+5. Depois de validar o jogo no domínio, o projeto antigo pode ser removido, conforme autorizado pelo mantenedor. Preserve o projeto `tempo-claro`, que é outro projeto e não participa desta migração.
+
+Mova os domínios entre os projetos; não remova a propriedade do domínio da conta e preserve os registros de e-mail. O endereço público permanece na publicação antiga até concluir essa etapa.
+
+### Atualizações automáticas por Git
+
+A atribuição automática dos domínios de produção foi habilitada no projeto **rpg-plataform**. Cada alteração precisa ser commitada e enviada por **push para main**; um commit apenas local não chega à Vercel.
+
+Para comprovar o fluxo, confira em **Deployments** que um push cria um deployment automaticamente com o mesmo SHA, que termina em **Ready** e tem ambiente **Production**. Depois da transferência dos domínios, confira também que `www.monzai.com.br` acompanha esse deployment. Uma publicação criada manualmente não comprova o funcionamento do gatilho Git.
+
+Se houver um rollback ativo, use **Undo Rollback** ou promova o deployment correto para retomar as atualizações. Não habilite a atribuição automática no projeto antigo enquanto ele continuar ligado ao TCC.
+
+Não são necessários tokens no código ou segredos do GitHub Actions para usar a integração Git nativa. Entrar na Vercel ou autorizar o plugin e instalar o aplicativo Vercel na organização do GitHub são permissões distintas; a instalação da organização foi concluída nesta migração.
+
 ## Importar o repositório
 
 1. Entre em https://vercel.com/new e conecte o GitHub que tem acesso à organização **RodrigoPratico**.
