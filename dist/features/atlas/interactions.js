@@ -27,12 +27,12 @@ function tooltipPosition(hover,x,y) {
  hover.style.left=`${clamp(x+14,8,Math.max(8,innerWidth-rect.width-12))}px`;
  hover.style.top=`${clamp(y+10,8,Math.max(8,innerHeight-rect.height-12))}px`;
 }
-export function bindMap({campaign,mapId,onSelect,onMove,onLocation,onMap,onRegion,onZoom,onToggles,onDrawPoint,drawing,report}) {
+export function bindMap({campaign,mapId,onSelect,onMove,onLocation,onMap,onRegion,onZoom,onToggles,onDrawPoint,onFullscreenToggle,drawing,report}) {
  $('#map-select')?.addEventListener('change',ev=>onMap(ev.target.value));
  $$('[data-map-back]').forEach(b=>b.addEventListener('click',()=>onMap(b.dataset.mapBack)));
  $$('[data-zoom]').forEach(b=>b.addEventListener('click',()=>onZoom(b.dataset.zoom)));
  for(const [id,key] of [['characters','showCharacters'],['locations','showLocations'],['regions','showRegions']])$(`#toggle-${id}`)?.addEventListener('change',ev=>onToggles(key,ev.target.checked));
- $('#fullscreen')?.addEventListener('click',()=>{if(document.fullscreenElement)document.exitFullscreen().catch(report);else $('.atlas-panel').requestFullscreen?.().catch(report);});
+ $('#fullscreen')?.addEventListener('click',onFullscreenToggle);
  $$('[data-location]').forEach(b=>b.addEventListener('click',()=>onLocation(b.dataset.location)));
  const hover=$('#hover-card');
  for(const node of $$('[data-region]')) {

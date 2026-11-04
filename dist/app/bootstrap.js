@@ -13,7 +13,7 @@ import {logError} from '../shared/errors.js';
 import {createDialogs} from '../shared/dialogs.js';
 
 const registry=new FeatureRegistry(),repository=new CampaignRepository(validateState);
-const ui={mapId:'',selectedId:'momo',chapterId:'ch4',zoom:1,showLocations:false,showCharacters:true,showRegions:true,query:'',regionFilter:'',drawing:null};
+const ui={mapId:'',selectedId:'momo',chapterId:'ch4',zoom:1,showLocations:false,showCharacters:true,showRegions:true,query:'',regionFilter:'',drawing:null,fullscreen:false};
 let activeRoute='',toastTimer,channel;
 function toast(message,error=false){const el=$('#toast');clearTimeout(toastTimer);el.textContent=message;el.className=error?'show error':'show';toastTimer=setTimeout(()=>el.className='',error?10000:4500);}
 function report(err){logError('operation_failed',err);toast(err.message||'Não foi possível concluir a operação.',true);}
