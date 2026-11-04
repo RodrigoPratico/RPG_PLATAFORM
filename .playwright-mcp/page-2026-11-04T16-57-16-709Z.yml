@@ -1,0 +1,303 @@
+- generic [active] [ref=e1]:
+  - link "Ir para o conteúdo" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - complementary [ref=e3]:
+    - link "CALDRIS ATLAS DE CRÔNICAS" [ref=e4] [cursor=pointer]:
+      - /url: "#mapa"
+      - generic [ref=e5]:
+        - text: CALDRIS
+        - generic [ref=e6]: ATLAS DE CRÔNICAS
+    - generic [ref=e7]: SEU UNIVERSO
+    - generic [ref=e8]: Campanha
+    - combobox "Campanha" [ref=e9]:
+      - option "A Voz Que Devolve" [selected]
+    - navigation "Navegação principal" [ref=e10]:
+      - link "Atlas do mundo" [ref=e290] [cursor=pointer]:
+        - /url: "#mapa"
+      - link "Personagens 21" [ref=e295] [cursor=pointer]:
+        - /url: "#personagens"
+        - generic [ref=e299]: Personagens
+        - generic [ref=e300]: "21"
+      - link "Capítulos 5" [ref=e301] [cursor=pointer]:
+        - /url: "#capitulos"
+        - generic [ref=e304]: Capítulos
+        - generic [ref=e305]: "5"
+      - link "Compêndio" [ref=e306] [cursor=pointer]:
+        - /url: "#compendio"
+      - link "Facções" [ref=e310] [cursor=pointer]:
+        - /url: "#faccoes"
+      - link "Tramas e mistérios" [ref=e314] [cursor=pointer]:
+        - /url: "#tramas"
+      - link "Campeonato" [ref=e319] [cursor=pointer]:
+        - /url: "#campeonato"
+      - link "Universo e backups" [ref=e324] [cursor=pointer]:
+        - /url: "#universo"
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - text: ◒
+        - generic [ref=e52]: Sob as duas luas
+        - text: ◓
+      - paragraph [ref=e53]: Todo universo começacom uma boa história.
+      - button "Como usar o atlas ↗" [ref=e54] [cursor=pointer]
+  - generic [ref=e55]:
+    - banner [ref=e56]:
+      - generic [ref=e57]: A Voz Que Devolve / Atlas do mundo
+      - generic [ref=e58]:
+        - status [ref=e59]: ● Salvo neste navegador
+        - button "↓ Backup" [ref=e60] [cursor=pointer]
+    - main [ref=e61]:
+      - generic [ref=e329]:
+        - generic [ref=e330]:
+          - generic [ref=e331]: EXPLORANDO A REGIÃO
+          - heading "Thornwick e Marca Oriental" [level=1] [ref=e332]
+          - paragraph [ref=e333]: A história se aproxima. Explore os lugares e os personagens presentes.
+        - button "Novo personagem" [ref=e335] [cursor=pointer]
+      - generic [ref=e338]:
+        - generic [ref=e339]:
+          - strong [ref=e342]: A Voz Que Devolve
+          - generic [ref=e343]: Crônica de Monzai Dragon
+        - generic [ref=e344]: Dia 26 da Lua Pálida · 02h
+      - generic [ref=e345]:
+        - generic [ref=e346]:
+          - generic [ref=e347]:
+            - generic [ref=e348]:
+              - navigation "Caminho no atlas" [ref=e350]:
+                - button "↖ Mapa do reino" [ref=e351] [cursor=pointer]
+                - generic [ref=e352]: /
+                - strong [ref=e353]: Thornwick e Marca Oriental
+              - button "＋ Delimitar região" [ref=e354] [cursor=pointer]
+            - generic [ref=e355]:
+              - generic [ref=e356]:
+                - combobox "Mapa ativo" [ref=e360]:
+                  - option "Caldris · mapa do reino"
+                  - option "Caldris e terras vizinhas · mapa anterior"
+                  - option "Caldris Real e Greymoor"
+                  - option "Brennford e Floresta de Velmoor"
+                  - option "Rio Ashen, Ponte Velha e Dunmere"
+                  - option "Thornwick e Marca Oriental" [selected]
+                  - option "Durnholm e Montanhas Cinzas"
+                  - option "Terras de Harrow"
+                  - option "Ducado Velarde e Costa das Brumas"
+                  - option "Hallow e os Cumes Sangrentos"
+                  - option "Domínio Brandt e Quatro Ducados"
+                  - option "Brennford · Campos de Trigo-Azulado"
+                  - option "Brennford · Capela de Pedra Negra"
+                  - option "Brennford · Estalagem da Marta"
+                  - option "Brennford · Filial da Guilda"
+                  - option "Brennford · Moinho da Colina Oeste"
+                  - option "Brennford · Portão de Garrick"
+                  - option "Brennford · Riacho da Casca Cinzenta"
+                  - option "Brennford · Ruínas das Raízes"
+                  - option "Brennford · Sulco de Borin"
+                  - option "Brennford · Trilha dos Caçadores"
+                  - option "Caldris-Real · Bairro da Guilda"
+                  - option "Caldris-Real · Castelo Real"
+                  - option "Caldris-Real · Doca Real"
+                  - option "Caldris-Real · Greymoor"
+                  - option "Caldris-Real · Jardins do Parlamento"
+                  - option "Caldris-Real · Mercado do Sol"
+                  - option "Caldris-Real · Murallas Brancas"
+                  - option "Caldris-Real · Ponte dos Reis"
+                  - option "Caldris-Real · Portão do Sul"
+                  - option "Caldris-Real · Praça do Conselho"
+                  - option "Hallow · Cascatas do Abismo"
+                  - option "Hallow · Cidade Central"
+                  - option "Hallow · Costa Cinzenta"
+                  - option "Hallow · Cumes Sangrentos"
+                  - option "Hallow · Ponta do Ferro"
+                  - option "Hallow · Porto das Cinzas"
+                  - option "Hallow · Rota dos Clãs"
+                  - option "Hallow · Totem do Uivo"
+                  - option "Hallow · Vale da Matilha"
+                  - option "Hallow · Vigia das Agulhas"
+                  - option "Thornwick · Catedral das Passagens"
+                  - option "Thornwick · Cripta dos Nomes"
+                  - option "Thornwick · Guilda Central"
+                  - option "Thornwick · Mercado do Sal"
+                  - option "Thornwick · Pátio Leste"
+                  - option "Thornwick · Portão Oriental"
+                  - option "Thornwick · Praça dos 1.200"
+                  - option "Thornwick · Torre do Marquês"
+                  - option "Thornwick · Três Torres em Espiral"
+                  - option "Thornwick · Tribunal das Passagens"
+                - generic [ref=e362] [cursor=pointer]:
+                  - checkbox "Personagens" [checked] [ref=e363]
+                  - text: Personagens
+                - generic [ref=e364] [cursor=pointer]:
+                  - checkbox "Lugares" [ref=e365]
+                  - text: Lugares
+                - generic [ref=e366] [cursor=pointer]:
+                  - checkbox "Regiões" [checked] [ref=e367]
+                  - text: Regiões
+              - generic [ref=e368]:
+                - button "Diminuir zoom" [ref=e369] [cursor=pointer]: −
+                - generic [ref=e370]: 100%
+                - button "Aumentar zoom" [ref=e371] [cursor=pointer]: +
+                - button "Ajustar" [ref=e372] [cursor=pointer]
+                - button "Mapa em tela cheia" [ref=e373] [cursor=pointer]: ⛶
+            - generic [ref=e374]:
+              - generic [ref=e375]:
+                - img "Thornwick e Marca Oriental" [ref=e376]
+                - img "Regiões clicáveis":
+                  - button "Explorar Catedral das Passagens" [ref=e377] [cursor=pointer]
+                  - button "Explorar Cripta dos Nomes" [ref=e378] [cursor=pointer]
+                  - button "Explorar Guilda Central" [ref=e379] [cursor=pointer]
+                  - button "Explorar Mercado do Sal" [ref=e380] [cursor=pointer]
+                  - button "Explorar Pátio Leste" [ref=e381] [cursor=pointer]
+                  - button "Explorar Portão Oriental" [ref=e382] [cursor=pointer]
+                  - button "Explorar Praça dos 1.200" [ref=e383] [cursor=pointer]
+                  - button "Explorar Torre do Marquês" [ref=e384] [cursor=pointer]
+                  - button "Explorar Três Torres em Espiral" [ref=e385] [cursor=pointer]
+                  - button "Explorar Tribunal das Passagens" [ref=e386] [cursor=pointer]
+                - button "Explorar Catedral das Passagens; abrir mapa" [ref=e387] [cursor=pointer]
+                - button "Explorar Cripta dos Nomes; abrir mapa" [ref=e388] [cursor=pointer]
+                - button "Explorar Guilda Central; abrir mapa" [ref=e389] [cursor=pointer]
+                - button "Explorar Mercado do Sal; abrir mapa" [ref=e390] [cursor=pointer]
+                - button "Explorar Pátio Leste; abrir mapa" [ref=e391] [cursor=pointer]
+                - button "Explorar Portão Oriental; abrir mapa" [ref=e392] [cursor=pointer]
+                - button "Explorar Praça dos 1.200; abrir mapa" [ref=e393] [cursor=pointer]
+                - button "Explorar Torre do Marquês; abrir mapa" [ref=e394] [cursor=pointer]
+                - button "Explorar Três Torres em Espiral; abrir mapa" [ref=e395] [cursor=pointer]
+                - button "Explorar Tribunal das Passagens; abrir mapa" [ref=e396] [cursor=pointer]
+                - button "Varrick Thorne; arraste para mover, Enter para abrir ficha" [ref=e397]:
+                  - img "Varrick Thorne"
+                - button "Mathis Thorne; arraste para mover, Enter para abrir ficha" [ref=e398]:
+                  - generic "Mathis Thorne": MT
+              - generic: Aponte uma região para ler · Clique para explorar · Arraste personagens para transferir
+            - generic [ref=e399]:
+              - generic [ref=e400]: 2 personagens nesta região
+              - generic [ref=e402]: Marcadores locais salvos por região
+          - generic [ref=e403]:
+            - generic [ref=e404]:
+              - generic [ref=e405]:
+                - generic [ref=e406]: ESTADO DA REGIÃO
+                - heading "Thornwick e Marca Oriental" [level=2] [ref=e407]
+              - button "Editar resumo e contorno ↗" [ref=e408] [cursor=pointer]
+            - paragraph [ref=e409]: Varrick Thorne governa a Marca e escreve aos quatro duques indecisos. Mathis está livre. A Catedral das Passagens foi entregue sem condições, 1.200 pessoas foram curadas e a Cripta dos Nomes foi esvaziada. O Tribunal foi desfeito; os nomes presentes na ilustração descrevem lugares, não restauram instituições abolidas.
+            - generic [ref=e410]:
+              - heading "2 personagens presentes" [level=3] [ref=e411]
+              - button "Ver fichas deste local ↗" [ref=e412] [cursor=pointer]
+            - generic [ref=e413]:
+              - button [ref=e414] [cursor=pointer]:
+                - img "Varrick Thorne" [ref=e415]
+                - text: Varrick Thorne
+              - button "Mathis Thorne Mathis Thorne" [ref=e416] [cursor=pointer]:
+                - generic "Mathis Thorne" [ref=e417]: MT
+                - text: Mathis Thorne
+          - generic [ref=e418]:
+            - generic [ref=e419]:
+              - generic [ref=e420]:
+                - generic [ref=e421]: APROXIME A HISTÓRIA
+                - heading "Sub-regiões e locais ilustrados" [level=2] [ref=e422]
+              - generic [ref=e423]: 10 locais disponíveis
+            - generic "Sub-regiões disponíveis" [ref=e424]:
+              - button "Catedral das Passagens Catedral das Passagens 0 personagens · Explorar ↗" [ref=e425] [cursor=pointer]:
+                - img "Catedral das Passagens" [ref=e426]
+                - generic [ref=e427]:
+                  - strong [ref=e428]: Catedral das Passagens
+                  - generic [ref=e429]: 0 personagens · Explorar ↗
+              - button "Cripta dos Nomes Cripta dos Nomes 0 personagens · Explorar ↗" [ref=e430] [cursor=pointer]:
+                - img "Cripta dos Nomes" [ref=e431]
+                - generic [ref=e432]:
+                  - strong [ref=e433]: Cripta dos Nomes
+                  - generic [ref=e434]: 0 personagens · Explorar ↗
+              - button "Guilda Central Guilda Central 0 personagens · Explorar ↗" [ref=e435] [cursor=pointer]:
+                - img "Guilda Central" [ref=e436]
+                - generic [ref=e437]:
+                  - strong [ref=e438]: Guilda Central
+                  - generic [ref=e439]: 0 personagens · Explorar ↗
+              - button "Mercado do Sal Mercado do Sal 0 personagens · Explorar ↗" [ref=e440] [cursor=pointer]:
+                - img "Mercado do Sal" [ref=e441]
+                - generic [ref=e442]:
+                  - strong [ref=e443]: Mercado do Sal
+                  - generic [ref=e444]: 0 personagens · Explorar ↗
+              - button "Pátio Leste Pátio Leste 0 personagens · Explorar ↗" [ref=e445] [cursor=pointer]:
+                - img "Pátio Leste" [ref=e446]
+                - generic [ref=e447]:
+                  - strong [ref=e448]: Pátio Leste
+                  - generic [ref=e449]: 0 personagens · Explorar ↗
+              - button "Portão Oriental Portão Oriental 0 personagens · Explorar ↗" [ref=e450] [cursor=pointer]:
+                - img "Portão Oriental" [ref=e451]
+                - generic [ref=e452]:
+                  - strong [ref=e453]: Portão Oriental
+                  - generic [ref=e454]: 0 personagens · Explorar ↗
+              - button "Praça dos 1.200 Praça dos 1.200 0 personagens · Explorar ↗" [ref=e455] [cursor=pointer]:
+                - img "Praça dos 1.200" [ref=e456]
+                - generic [ref=e457]:
+                  - strong [ref=e458]: Praça dos 1.200
+                  - generic [ref=e459]: 0 personagens · Explorar ↗
+              - button "Torre do Marquês Torre do Marquês 0 personagens · Explorar ↗" [ref=e460] [cursor=pointer]:
+                - img "Torre do Marquês" [ref=e461]
+                - generic [ref=e462]:
+                  - strong [ref=e463]: Torre do Marquês
+                  - generic [ref=e464]: 0 personagens · Explorar ↗
+              - button "Três Torres em Espiral Três Torres em Espiral 0 personagens · Explorar ↗" [ref=e465] [cursor=pointer]:
+                - img "Três Torres em Espiral" [ref=e466]
+                - generic [ref=e467]:
+                  - strong [ref=e468]: Três Torres em Espiral
+                  - generic [ref=e469]: 0 personagens · Explorar ↗
+              - button "Tribunal das Passagens Tribunal das Passagens 0 personagens · Explorar ↗" [ref=e470] [cursor=pointer]:
+                - img "Tribunal das Passagens" [ref=e471]
+                - generic [ref=e472]:
+                  - strong [ref=e473]: Tribunal das Passagens
+                  - generic [ref=e474]: 0 personagens · Explorar ↗
+          - generic [ref=e475]:
+            - link [ref=e476] [cursor=pointer]:
+              - /url: "#personagens"
+              - generic [ref=e477]: PERSONAGENS
+              - strong [ref=e481]: "21"
+              - text: Vozes deste universo
+            - link [ref=e482] [cursor=pointer]:
+              - /url: "#capitulos"
+              - generic [ref=e483]: CAPÍTULOS
+              - strong [ref=e486]:
+                - text: "04"
+                - emphasis [ref=e487]: / 05
+              - text: Concluídos / no arquivo
+            - link [ref=e488] [cursor=pointer]:
+              - /url: "#tramas"
+              - generic [ref=e489]: TRAMAS ABERTAS
+              - strong [ref=e492]: "12"
+              - text: Histórias por desvendar
+        - complementary [ref=e493]:
+          - generic [ref=e494]:
+            - generic [ref=e495]: EM FOCO
+            - button "Editar ↗" [ref=e496] [cursor=pointer]
+          - button "Ampliar ficha de Varrick Thorne" [ref=e497] [cursor=pointer]:
+            - img "Varrick Thorne" [ref=e498]
+            - generic [ref=e500]:
+              - generic [ref=e501]: Marquês da Marca Oriental
+              - heading "Varrick Thorne" [level=2] [ref=e502]
+          - generic [ref=e503]:
+            - generic [ref=e504]: Thornwick
+            - generic [ref=e508]:
+              - generic [ref=e509]: RANK
+              - strong [ref=e510]: Inteligência 66
+            - heading "O que sabemos" [level=3] [ref=e511]
+            - paragraph [ref=e512]: "Governante cruel e pragmático: dobrou o dízimo na seca, enviou meninos ao Corvo Negro e manteve Yuki cativa. Cancelou a ordem de queimar Brennford e foi pessoalmente à ponte. Admitiu por escrito que cedeu o que nunca teve direito de possuir. Agora: escreve aos quatro duques indecisos em favor do novo regime."
+            - heading "Vínculos" [level=3] [ref=e513]
+            - paragraph [ref=e514]: Pai de Mathis, livre após oito anos como refém da Catedral. Aliado pragmático de Monzai.
+            - button "Abrir ficha completa" [ref=e515] [cursor=pointer]
+      - generic [ref=e518]:
+        - generic [ref=e519]:
+          - generic [ref=e520]: NA PRÓXIMA PÁGINA
+          - heading "V · O Campeonato de Batalhas" [level=2] [ref=e521]
+          - paragraph [ref=e522]: GANCHO Três exércitos não podem atravessar a barreira, mas podem acampar, passar fome e saquear aldeias. O inverno chega em seis semanas. A Carta não convence todos os ca…
+          - link "Continuar a crônica" [ref=e523] [cursor=pointer]:
+            - /url: "#capitulos"
+        - generic [ref=e526]:
+          - generic [ref=e527]:
+            - heading "Nos arquivos do reino" [level=2] [ref=e528]
+            - generic [ref=e529]: REGISTROS RECENTES
+          - generic [ref=e532]:
+            - text: Compêndio organizado · Dia 26 da Lua Pálida
+            - generic [ref=e533]: 30/10/2026, 21:00:00
+    - contentinfo [ref=e287]:
+      - text: CALDRIS
+      - generic [ref=e288]: Um lugar para guardar mundos.
+      - button "Salvo neste navegador · exporte seu backup" [ref=e289] [cursor=pointer]
+  - status
+  - tooltip "Mathis Thorne Mathis Thorne Thornwick e Marca Oriental · Inteligência 71":
+    - generic "Mathis Thorne": MT
+    - strong: Mathis Thorne
+    - generic: Thornwick e Marca Oriental · Inteligência 71

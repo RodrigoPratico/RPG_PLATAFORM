@@ -1,0 +1,2 @@
+[      12ms] [WARNING] [JavaScript Warning: "Exited fullscreen because fullscreen element was removed from document." {file: "http://127.0.0.1:8080/app/bootstrap.js" line: 40}] @ http://127.0.0.1:8080/app/bootstrap.js:40
+[      13ms] [WARNING] [JavaScript Warning: "Request for fullscreen was denied because Element.requestFullscreen() was not called from inside a short running user-generated event handler." {file: "http://127.0.0.1:8080/features/atlas/index.js" line: 23}] @ http://127.0.0.1:8080/features/atlas/index.js:23

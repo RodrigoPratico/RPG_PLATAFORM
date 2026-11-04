@@ -1,0 +1,2 @@
+[   40699ms] [WARNING] [JavaScript Warning: "Exited fullscreen because fullscreen element was removed from document." {file: "http://127.0.0.1:8080/app/bootstrap.js" line: 40}] @ http://127.0.0.1:8080/app/bootstrap.js:40
+[   69356ms] [WARNING] [JavaScript Warning: "Exited fullscreen because fullscreen element was removed from document." {file: "http://127.0.0.1:8080/app/bootstrap.js" line: 40}] @ http://127.0.0.1:8080/app/bootstrap.js:40

@@ -1,0 +1,320 @@
+- generic [active] [ref=e1]:
+  - link "Ir para o conteúdo" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - complementary [ref=e3]:
+    - link "CALDRIS ATLAS DE CRÔNICAS" [ref=e4] [cursor=pointer]:
+      - /url: "#mapa"
+      - generic [ref=e5]:
+        - text: CALDRIS
+        - generic [ref=e6]: ATLAS DE CRÔNICAS
+    - generic [ref=e7]: SEU UNIVERSO
+    - generic [ref=e8]: Campanha
+    - combobox "Campanha" [ref=e9]:
+      - option "A Voz Que Devolve" [selected]
+    - navigation "Navegação principal" [ref=e10]:
+      - link "Atlas do mundo" [ref=e11] [cursor=pointer]:
+        - /url: "#mapa"
+      - link "Personagens 21" [ref=e16] [cursor=pointer]:
+        - /url: "#personagens"
+        - generic [ref=e20]: Personagens
+        - generic [ref=e21]: "21"
+      - link "Capítulos 5" [ref=e22] [cursor=pointer]:
+        - /url: "#capitulos"
+        - generic [ref=e25]: Capítulos
+        - generic [ref=e26]: "5"
+      - link "Compêndio" [ref=e27] [cursor=pointer]:
+        - /url: "#compendio"
+      - link "Facções" [ref=e31] [cursor=pointer]:
+        - /url: "#faccoes"
+      - link "Tramas e mistérios" [ref=e35] [cursor=pointer]:
+        - /url: "#tramas"
+      - link "Campeonato" [ref=e40] [cursor=pointer]:
+        - /url: "#campeonato"
+      - link "Universo e backups" [ref=e45] [cursor=pointer]:
+        - /url: "#universo"
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - text: ◒
+        - generic [ref=e52]: Sob as duas luas
+        - text: ◓
+      - paragraph [ref=e53]: Todo universo começacom uma boa história.
+      - button "Como usar o atlas ↗" [ref=e54] [cursor=pointer]
+  - generic [ref=e55]:
+    - banner [ref=e56]:
+      - generic [ref=e57]: A Voz Que Devolve / Atlas do mundo
+      - generic [ref=e58]:
+        - status [ref=e59]: ● Salvo neste navegador
+        - button "↓ Backup" [ref=e60] [cursor=pointer]
+    - main [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - generic [ref=e64]: A CAMPANHA EM MOVIMENTO
+          - heading "Atlas do mundo" [level=1] [ref=e65]
+          - paragraph [ref=e66]: Aponte uma região para ler o resumo. Clique para entrar no seu mapa.
+        - button "Novo personagem" [ref=e68] [cursor=pointer]
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - strong [ref=e75]: A Voz Que Devolve
+          - generic [ref=e76]: Crônica de Monzai Dragon
+        - generic [ref=e77]: Dia 26 da Lua Pálida · 02h
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - generic [ref=e83]: MAPA DO REINO
+                - generic [ref=e84]: 9 regiões para explorar
+              - button "＋ Delimitar região" [ref=e85] [cursor=pointer]
+            - generic [ref=e86]:
+              - generic [ref=e87]:
+                - combobox "Mapa ativo" [ref=e91]:
+                  - option "Caldris · mapa do reino" [selected]
+                  - option "Caldris e terras vizinhas · mapa anterior"
+                  - option "Caldris Real e Greymoor"
+                  - option "Brennford e Floresta de Velmoor"
+                  - option "Rio Ashen, Ponte Velha e Dunmere"
+                  - option "Thornwick e Marca Oriental"
+                  - option "Durnholm e Montanhas Cinzas"
+                  - option "Terras de Harrow"
+                  - option "Ducado Velarde e Costa das Brumas"
+                  - option "Hallow e os Cumes Sangrentos"
+                  - option "Domínio Brandt e Quatro Ducados"
+                  - option "Brennford · Campos de Trigo-Azulado"
+                  - option "Brennford · Capela de Pedra Negra"
+                  - option "Brennford · Estalagem da Marta"
+                  - option "Brennford · Filial da Guilda"
+                  - option "Brennford · Moinho da Colina Oeste"
+                  - option "Brennford · Portão de Garrick"
+                  - option "Brennford · Riacho da Casca Cinzenta"
+                  - option "Brennford · Ruínas das Raízes"
+                  - option "Brennford · Sulco de Borin"
+                  - option "Brennford · Trilha dos Caçadores"
+                  - option "Caldris-Real · Bairro da Guilda"
+                  - option "Caldris-Real · Castelo Real"
+                  - option "Caldris-Real · Doca Real"
+                  - option "Caldris-Real · Greymoor"
+                  - option "Caldris-Real · Jardins do Parlamento"
+                  - option "Caldris-Real · Mercado do Sol"
+                  - option "Caldris-Real · Murallas Brancas"
+                  - option "Caldris-Real · Ponte dos Reis"
+                  - option "Caldris-Real · Portão do Sul"
+                  - option "Caldris-Real · Praça do Conselho"
+                  - option "Hallow · Cascatas do Abismo"
+                  - option "Hallow · Cidade Central"
+                  - option "Hallow · Costa Cinzenta"
+                  - option "Hallow · Cumes Sangrentos"
+                  - option "Hallow · Ponta do Ferro"
+                  - option "Hallow · Porto das Cinzas"
+                  - option "Hallow · Rota dos Clãs"
+                  - option "Hallow · Totem do Uivo"
+                  - option "Hallow · Vale da Matilha"
+                  - option "Hallow · Vigia das Agulhas"
+                  - option "Thornwick · Catedral das Passagens"
+                  - option "Thornwick · Cripta dos Nomes"
+                  - option "Thornwick · Guilda Central"
+                  - option "Thornwick · Mercado do Sal"
+                  - option "Thornwick · Pátio Leste"
+                  - option "Thornwick · Portão Oriental"
+                  - option "Thornwick · Praça dos 1.200"
+                  - option "Thornwick · Torre do Marquês"
+                  - option "Thornwick · Três Torres em Espiral"
+                  - option "Thornwick · Tribunal das Passagens"
+                - generic [ref=e93] [cursor=pointer]:
+                  - checkbox "Personagens" [checked] [ref=e94]
+                  - text: Personagens
+                - generic [ref=e95] [cursor=pointer]:
+                  - checkbox "Lugares" [ref=e96]
+                  - text: Lugares
+                - generic [ref=e97] [cursor=pointer]:
+                  - checkbox "Regiões" [checked] [ref=e98]
+                  - text: Regiões
+              - generic [ref=e99]:
+                - button "Diminuir zoom" [ref=e100] [cursor=pointer]: −
+                - generic [ref=e101]: 100%
+                - button "Aumentar zoom" [ref=e102] [cursor=pointer]: +
+                - button "Ajustar" [ref=e103] [cursor=pointer]
+                - button "Mapa em tela cheia" [ref=e104] [cursor=pointer]: ⛶
+            - generic [ref=e105]:
+              - generic:
+                - img "Caldris · mapa do reino"
+                - img "Regiões clicáveis":
+                  - button "Explorar Durnholm e Montanhas Cinzas"
+                  - button "Explorar Brennford e Floresta de Velmoor"
+                  - button "Explorar Caldris Real e Greymoor"
+                  - button "Explorar Thornwick e Marca Oriental"
+                  - button "Explorar Domínio Brandt e Quatro Ducados"
+                  - button "Explorar Terras de Harrow"
+                  - button "Explorar Hallow e os Cumes Sangrentos"
+                  - button "Explorar Ducado Velarde e Costa das Brumas"
+                  - button "Explorar Rio Ashen, Ponte Velha e Dunmere"
+                - button "9 personagens em Caldris Real e Greymoor; abrir mapa" [ref=e106] [cursor=pointer]:
+                  - generic [ref=e110]: "9"
+                - button "2 personagens em Brennford e Floresta de Velmoor; abrir mapa" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e115]: "2"
+                - button "0 personagens em Rio Ashen, Ponte Velha e Dunmere; abrir mapa" [ref=e116] [cursor=pointer]:
+                  - generic [ref=e120]: "0"
+                - button "2 personagens em Thornwick e Marca Oriental; abrir mapa" [ref=e121] [cursor=pointer]:
+                  - generic [ref=e125]: "2"
+                - button "4 personagens em Durnholm e Montanhas Cinzas; abrir mapa" [ref=e126] [cursor=pointer]:
+                  - generic [ref=e130]: "4"
+                - button "1 personagens em Terras de Harrow; abrir mapa" [ref=e131] [cursor=pointer]:
+                  - generic [ref=e135]: "1"
+                - button "1 personagens em Ducado Velarde e Costa das Brumas; abrir mapa" [ref=e136] [cursor=pointer]:
+                  - generic [ref=e140]: "1"
+                - button "0 personagens em Hallow e os Cumes Sangrentos; abrir mapa" [ref=e141] [cursor=pointer]:
+                  - generic [ref=e145]: "0"
+                - button "1 personagens em Domínio Brandt e Quatro Ducados; abrir mapa" [ref=e146] [cursor=pointer]:
+                  - generic [ref=e150]: "1"
+                - button "Monzai Dragon; arraste para mover, Enter para abrir ficha" [ref=e151]:
+                  - img "Monzai Dragon"
+                  - generic [ref=e152]: ♛
+                - button "Celine Auvret; arraste para mover, Enter para abrir ficha" [ref=e153]:
+                  - img "Celine Auvret"
+                - button "Lyra Ashvale; arraste para mover, Enter para abrir ficha" [ref=e154]:
+                  - img "Lyra Ashvale"
+                - button "Borin Ironhall; arraste para mover, Enter para abrir ficha" [ref=e155]:
+                  - img "Borin Ironhall"
+                - button "Aurelian Vesk; arraste para mover, Enter para abrir ficha" [ref=e156]:
+                  - img "Aurelian Vesk"
+                - button "Elric Vance; arraste para mover, Enter para abrir ficha" [ref=e157]:
+                  - img "Elric Vance"
+                - button "Yuki; arraste para mover, Enter para abrir ficha" [ref=e158]:
+                  - img "Yuki"
+                - button "Varrick Thorne; arraste para mover, Enter para abrir ficha" [ref=e159]:
+                  - img "Varrick Thorne"
+                - button "Sir Caedmon Royce; arraste para mover, Enter para abrir ficha" [ref=e160]:
+                  - img "Sir Caedmon Royce"
+                - button "Mathis Thorne; arraste para mover, Enter para abrir ficha" [ref=e161]:
+                  - generic "Mathis Thorne": MT
+                - button "Lady Oriane Velarde; arraste para mover, Enter para abrir ficha" [ref=e162]:
+                  - generic "Lady Oriane Velarde": LO
+                - button "Aldous Mallory; arraste para mover, Enter para abrir ficha" [ref=e163]:
+                  - generic "Aldous Mallory": AM
+                - button "Avery Pike; arraste para mover, Enter para abrir ficha" [ref=e164]:
+                  - generic "Avery Pike": AP
+                - button "Barnaby Finch; arraste para mover, Enter para abrir ficha" [ref=e165]:
+                  - generic "Barnaby Finch": BF
+                - button "Dain Holloway; arraste para mover, Enter para abrir ficha" [ref=e166]:
+                  - generic "Dain Holloway": DH
+                - button "Garrick Dunn; arraste para mover, Enter para abrir ficha" [ref=e167]:
+                  - generic "Garrick Dunn": GD
+                - button "Duque Velarde; arraste para mover, Enter para abrir ficha" [ref=e168]:
+                  - generic "Duque Velarde": DV
+                - button "Duque Harrow; arraste para mover, Enter para abrir ficha" [ref=e169]:
+                  - generic "Duque Harrow": DH
+                - button "Duquesa Ilsa Brandt; arraste para mover, Enter para abrir ficha" [ref=e170]:
+                  - generic "Duquesa Ilsa Brandt": DI
+                - button "Teodric Hale; arraste para mover, Enter para abrir ficha" [ref=e171]:
+                  - generic "Teodric Hale": TH
+              - generic: Aponte uma região para ler · Clique para explorar · Arraste personagens para transferir
+            - generic [ref=e172]:
+              - generic [ref=e173]: 20 personagens neste mapa
+              - generic [ref=e175]: Contornos e posições aproximados · editáveis
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - generic [ref=e178]:
+                - generic [ref=e179]: EXPLORE O REINO
+                - heading "Regiões do mapa" [level=2] [ref=e180]
+              - generic [ref=e181]: 9 locais disponíveis
+            - generic "Acesso aos mapas regionais" [ref=e182]:
+              - button "Caldris Real e Greymoor Caldris Real e Greymoor 9 personagens · Explorar ↗" [ref=e183] [cursor=pointer]:
+                - img "Caldris Real e Greymoor" [ref=e184]
+                - generic [ref=e185]:
+                  - strong [ref=e186]: Caldris Real e Greymoor
+                  - generic [ref=e187]: 9 personagens · Explorar ↗
+              - button "Brennford e Floresta de Velmoor Brennford e Floresta de Velmoor 2 personagens · Explorar ↗" [ref=e188] [cursor=pointer]:
+                - img "Brennford e Floresta de Velmoor" [ref=e189]
+                - generic [ref=e190]:
+                  - strong [ref=e191]: Brennford e Floresta de Velmoor
+                  - generic [ref=e192]: 2 personagens · Explorar ↗
+              - button "Rio Ashen, Ponte Velha e Dunmere Rio Ashen, Ponte Velha e Dunmere 0 personagens · Explorar ↗" [ref=e193] [cursor=pointer]:
+                - img "Rio Ashen, Ponte Velha e Dunmere" [ref=e194]
+                - generic [ref=e195]:
+                  - strong [ref=e196]: Rio Ashen, Ponte Velha e Dunmere
+                  - generic [ref=e197]: 0 personagens · Explorar ↗
+              - button "Thornwick e Marca Oriental Thornwick e Marca Oriental 2 personagens · Explorar ↗" [ref=e198] [cursor=pointer]:
+                - img "Thornwick e Marca Oriental" [ref=e199]
+                - generic [ref=e200]:
+                  - strong [ref=e201]: Thornwick e Marca Oriental
+                  - generic [ref=e202]: 2 personagens · Explorar ↗
+              - button "Durnholm e Montanhas Cinzas Durnholm e Montanhas Cinzas 4 personagens · Explorar ↗" [ref=e203] [cursor=pointer]:
+                - img "Durnholm e Montanhas Cinzas" [ref=e204]
+                - generic [ref=e205]:
+                  - strong [ref=e206]: Durnholm e Montanhas Cinzas
+                  - generic [ref=e207]: 4 personagens · Explorar ↗
+              - button "Terras de Harrow Terras de Harrow 1 personagens · Explorar ↗" [ref=e208] [cursor=pointer]:
+                - img "Terras de Harrow" [ref=e209]
+                - generic [ref=e210]:
+                  - strong [ref=e211]: Terras de Harrow
+                  - generic [ref=e212]: 1 personagens · Explorar ↗
+              - button "Ducado Velarde e Costa das Brumas Ducado Velarde e Costa das Brumas 1 personagens · Explorar ↗" [ref=e213] [cursor=pointer]:
+                - img "Ducado Velarde e Costa das Brumas" [ref=e214]
+                - generic [ref=e215]:
+                  - strong [ref=e216]: Ducado Velarde e Costa das Brumas
+                  - generic [ref=e217]: 1 personagens · Explorar ↗
+              - button "Hallow e os Cumes Sangrentos Hallow e os Cumes Sangrentos 0 personagens · Explorar ↗" [ref=e218] [cursor=pointer]:
+                - img "Hallow e os Cumes Sangrentos" [ref=e219]
+                - generic [ref=e220]:
+                  - strong [ref=e221]: Hallow e os Cumes Sangrentos
+                  - generic [ref=e222]: 0 personagens · Explorar ↗
+              - button "Domínio Brandt e Quatro Ducados Domínio Brandt e Quatro Ducados 1 personagens · Explorar ↗" [ref=e223] [cursor=pointer]:
+                - img "Domínio Brandt e Quatro Ducados" [ref=e224]
+                - generic [ref=e225]:
+                  - strong [ref=e226]: Domínio Brandt e Quatro Ducados
+                  - generic [ref=e227]: 1 personagens · Explorar ↗
+          - generic [ref=e228]:
+            - link [ref=e229] [cursor=pointer]:
+              - /url: "#personagens"
+              - generic [ref=e230]: PERSONAGENS
+              - strong [ref=e234]: "21"
+              - text: Vozes deste universo
+            - link [ref=e235] [cursor=pointer]:
+              - /url: "#capitulos"
+              - generic [ref=e236]: CAPÍTULOS
+              - strong [ref=e239]:
+                - text: "04"
+                - emphasis [ref=e240]: / 05
+              - text: Concluídos / no arquivo
+            - link [ref=e241] [cursor=pointer]:
+              - /url: "#tramas"
+              - generic [ref=e242]: TRAMAS ABERTAS
+              - strong [ref=e245]: "12"
+              - text: Histórias por desvendar
+        - complementary [ref=e246]:
+          - generic [ref=e247]:
+            - generic [ref=e248]: EM FOCO
+            - button "Editar ↗" [ref=e249] [cursor=pointer]
+          - button "Ampliar ficha de Monzai Dragon" [ref=e250] [cursor=pointer]:
+            - img "Monzai Dragon" [ref=e251]
+            - generic [ref=e253]:
+              - generic [ref=e254]: Rainha de Caldris · A Voz Que Devolve
+              - heading "Monzai Dragon" [level=2] [ref=e255]
+          - generic [ref=e256]:
+            - generic [ref=e257]: Caldris Real
+            - generic [ref=e261]:
+              - generic [ref=e262]: RANK
+              - strong [ref=e263]: 9.999.999 · registro público 0
+            - heading "O que sabemos" [level=3] [ref=e264]
+            - paragraph [ref=e265]: "Morreu em outro mundo e tomou o poder de Aethran durante a bênção. Carrega duas almas divinas: Aethran, de memórias nítidas, e a entidade de Durnholm, de memórias turvas. Objetivo declarado: absorver todos os deuses. Curou Brennford, 1.200 pessoas em Thornwick e ressuscitou 8.840 em Durnholm. Obteve o reino por carta legal, sem matar súditos. Agora: pátio norte do castelo, às 02h. Exausta após sete dias de extrações; leva a mão ao peito sem perceber. Politicamente protegida pela Carta e pela barreira. Nunca matou um ser humano. Sua linguagem de posse é questionada pelos aliados."
+            - heading "Vínculos" [level=3] [ref=e266]
+            - paragraph [ref=e267]: Noiva de Lyra Ashvale e Celine Auvret. Borin é uma figura protetora. Vesk investiga as almas divinas; Yuki é sua protegida.
+            - button "Abrir ficha completa" [ref=e268] [cursor=pointer]
+      - generic [ref=e271]:
+        - generic [ref=e272]:
+          - generic [ref=e273]: NA PRÓXIMA PÁGINA
+          - heading "V · O Campeonato de Batalhas" [level=2] [ref=e274]
+          - paragraph [ref=e275]: GANCHO Três exércitos não podem atravessar a barreira, mas podem acampar, passar fome e saquear aldeias. O inverno chega em seis semanas. A Carta não convence todos os ca…
+          - link "Continuar a crônica" [ref=e276] [cursor=pointer]:
+            - /url: "#capitulos"
+        - generic [ref=e279]:
+          - generic [ref=e280]:
+            - heading "Nos arquivos do reino" [level=2] [ref=e281]
+            - generic [ref=e282]: REGISTROS RECENTES
+          - generic [ref=e285]:
+            - text: Compêndio organizado · Dia 26 da Lua Pálida
+            - generic [ref=e286]: 30/10/2026, 21:00:00
+    - contentinfo [ref=e287]:
+      - text: CALDRIS
+      - generic [ref=e288]: Um lugar para guardar mundos.
+      - button "Salvo neste navegador · exporte seu backup" [ref=e289] [cursor=pointer]
+  - status
